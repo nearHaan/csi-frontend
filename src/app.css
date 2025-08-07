@@ -4,5 +4,28 @@
 @import '../static/fonts/font.css';
 
 @theme {
-	--font-mono: "Space Mono", monospace;
+    --font-mono: "Space Mono", monospace;
+}
+
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+}
+
+.marquee-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
