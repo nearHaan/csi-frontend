@@ -1,2 +1,8 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+@import '../static/fonts/font.css';
+
+@theme {
+	--font-mono: "Space Mono", monospace;
+}
