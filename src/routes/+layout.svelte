@@ -37,7 +37,7 @@
 			</div>
 		</nav>
 	</header>
-	<main class="flex h-full justify-center">
+	<main class="flex min-h-screen justify-center">
 		{@render children?.()}
 	</main>
 	<footer class="border-t-1 border-black bg-[#222222] text-white flex justify-center">
