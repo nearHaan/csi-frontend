@@ -31,7 +31,7 @@
 						<a href="/events">Events</a>
 					</li>
 					<li>
-						<a class="text-[#008CFF]" href="/">Login</a>
+						<a class="text-[#008CFF]" href="/register">Login</a>
 					</li>
 				</ul>
 			</div>
