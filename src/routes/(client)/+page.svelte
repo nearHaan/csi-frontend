@@ -52,7 +52,7 @@
 	<!-- First Section -->
 	<section id="hero" class="relative flex min-h-screen flex-col items-center justify-start border-x-1 border-black">
 		<div class="flex w-full items-center justify-between border-b-1 border-black">
-			<div class="animate-pulse">
+			<div class="{isLightOn ? "animate-pulse" : ""}">
 				<svg
 					width="111"
 					height="130"
