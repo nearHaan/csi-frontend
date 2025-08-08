@@ -1,69 +1,7 @@
 <script lang="ts">
 	import ExecomCard from '$lib/components/execom-card.svelte';
-	import type { ExecomList } from '$lib/types';
 
-	let execom_list: ExecomList = {
-		'Admin Team': [
-			{
-				id: 1,
-				name: 'Raihan Rasheed',
-				position: 'Chair',
-				social_link: '',
-				profile_link: ''
-			},
-			{
-				id: 2,
-				name: 'Raihan Rasheed',
-				position: 'Chair',
-				social_link: '',
-				profile_link: ''
-			},
-			{
-				id: 3,
-				name: 'Raihan Rasheed',
-				position: 'Chair',
-				social_link: '',
-				profile_link: ''
-			},
-			{
-				id: 4,
-				name: 'Raihan Rasheed',
-				position: 'Chair',
-				social_link: '',
-				profile_link: ''
-			}
-		],
-        'Tech Team': [
-			{
-				id: 1,
-				name: 'Raihan Rasheed',
-				position: 'Chair',
-				social_link: '',
-				profile_link: ''
-			},
-			{
-				id: 2,
-				name: 'Raihan Rasheed',
-				position: 'Chair',
-				social_link: '',
-				profile_link: ''
-			},
-			{
-				id: 3,
-				name: 'Raihan Rasheed',
-				position: 'Chair',
-				social_link: '',
-				profile_link: ''
-			},
-			{
-				id: 4,
-				name: 'Raihan Rasheed',
-				position: 'Chair',
-				social_link: '',
-				profile_link: ''
-			}
-		],
-	};
+	const { data } = $props();
 </script>
 
 <div class="flex w-full flex-col items-center">
@@ -72,7 +10,7 @@
 	>
 		<h1 class="text-5xl">MEET OUR TEAM</h1>
 	</div>
-	{#each Object.entries(execom_list) as [section, members]}
+	{#each Object.entries(data.execom_list) as [section, members]}
 		{#if section !== 'Admin Team'}
 			<div class="flex w-full justify-center border-y-1 border-black">
 				<div class="flex h-20 w-full max-w-6xl items-center justify-start border-x-1 border-black">
