@@ -3,7 +3,7 @@
 	import type { Event } from '$lib/types';
 	import { Power } from '@lucide/svelte';
 
-	let isLoggedin = true;
+	let isLoggedin = false;
 	const myEvents: Event[] = [
 		{
 			id: 1,

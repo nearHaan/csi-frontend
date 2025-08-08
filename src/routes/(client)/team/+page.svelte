@@ -8,7 +8,7 @@
 	<div
 		class="flex h-40 w-full max-w-6xl items-center justify-center border-x-1 border-b border-black"
 	>
-		<h1 class="text-5xl">MEET OUR TEAM</h1>
+		<h1 class="max-sm:text-2xl text-5xl">MEET OUR TEAM</h1>
 	</div>
 	{#each Object.entries(data.execom_list) as [section, members]}
 		{#if section !== 'Admin Team'}
