@@ -52,7 +52,7 @@
 	<!-- First Section -->
 	<section id="hero" class="relative flex min-h-screen flex-col items-center justify-start border-x-1 border-black">
 		<div class="flex w-full items-center justify-between border-b-1 border-black">
-			<div class="{isLightOn?"shadow-lg":""}">
+			<div class="animate-pulse">
 				<svg
 					width="111"
 					height="130"
@@ -67,7 +67,7 @@
 				class="flex h-[130px] w-[130px] items-center justify-center rounded-full border-1 border-black bg-[#1B1B1B]"
 				onclick={toggleLight}
 			>
-				<Power />
+				<Power color = {isLightOn ? "#008CFF":"#ffffff"}/>
 		</button>
 		</div>
 		{#if !isLoggedin}
@@ -89,7 +89,7 @@
 							foster creativity, and provide a platform for students to explore and excel in the
 							world of technology.
 						</p>
-						<button class="mt-10 rounded-full bg-[#008CFF] p-3">Ready to join CSI?</button>
+						<button class="animate-pulse mt-10 rounded-full bg-[#008CFF] p-3">Ready to join CSI?</button>
 					</div>
 				</div>
 			</div>
@@ -126,7 +126,7 @@
 				</div>
 			</div>
 			<div class="marquee-container my-4 flex items-center border-y-1 border-black p-5">
-				<div class="marquee-track text-5xl font-bold text-[#2D2D2D]">
+				<div class="{isLightOn?"marquee-track":""} text-5xl font-bold text-[#2D2D2D]">
 					<span>WHAT DO WE DO?</span>
 					<span>WHAT DO WE DO?</span>
 					<span>WHAT DO WE DO?</span>
