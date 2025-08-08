@@ -3,7 +3,7 @@
 	import type { Event } from '$lib/types';
 	import { Power } from '@lucide/svelte';
 
-	let isLoggedin = false;
+	let isLoggedin = true;
 	const myEvents: Event[] = [
 		{
 			id: 1,
@@ -44,8 +44,8 @@
 
 <main class="flex w-full max-w-6xl flex-col justify-center overflow-hidden bg-[#222222] text-white">
 	<!-- First Section -->
-	<section id="hero" class="relative flex min-h-screen flex-col items-center justify-start">
-		<div class="flex w-full items-center justify-between border-r-1 border-b-1 border-black">
+	<section id="hero" class="relative flex min-h-screen flex-col items-center justify-start border-x-1 border-black">
+		<div class="flex w-full items-center justify-between border-b-1 border-black">
 			<div>
 				<svg
 					width="111"
@@ -64,7 +64,7 @@
 			</div>
 		</div>
 		{#if !isLoggedin}
-			<div class="h-full w-full border-x-1 border-black">
+			<div class="h-full w-full">
 				<div
 					class="mx-4 mt-4 flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col min-lg:rounded-4xl"
 				>
@@ -88,9 +88,9 @@
 			</div>
 		{/if}
 		{#if isLoggedin}
-			<div class="m-4 p-4 shadow-[4px_4px_0_0_black] border-1">
+			<div class="m-4 p-4 shadow-[4px_4px_0_0_black] border-black border-1">
 				<h2 class="text-2xl">My Events</h2>
-				<div class="flex gap-4">
+				<div class="flex flex-col min-sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4">
 					{#each myEvents as event}
 						<EventCard event = {event}/>
 					{/each}
