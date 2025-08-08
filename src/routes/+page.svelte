@@ -63,8 +63,8 @@
 				</p>
 			</div>
 		</div>
-		<div class="my-4 marquee-container border-y-1 border-black p-5">
-			<div class="marquee-track text-2xl">
+		<div class="my-4 flex items-center marquee-container border-y-1 border-black p-5">
+			<div class="marquee-track font-bold text-[#2D2D2D] text-5xl">
 				<span>WHAT DO WE DO?</span>
 				<span>WHAT DO WE DO?</span>
 				<span>WHAT DO WE DO?</span>
