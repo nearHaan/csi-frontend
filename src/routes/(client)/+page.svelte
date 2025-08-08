@@ -132,9 +132,9 @@
 					<span>WHAT DO WE DO?</span>
 				</div>
 			</div>
-			<div class="flex h-full items-center justify-center p-5 max-md:flex-col-reverse">
-				<div class="my-4 flex w-fit">
-					<p class="mx-2 text-lg">
+			<div class="flex h-full w-full items-center justify-center p-5 max-md:flex-col-reverse">
+				<div class="my-4 flex w-full">
+					<p class="mx-2 w-full text-lg">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius dapibus ante at
 						interdum. Maecenas elit velit, interdum non congue at, porta eu lorem. Curabitur id sem
 						pretium, lacinia diam sit amet, dignissim odio. Pellentesque iaculis arcu id elementum
@@ -142,7 +142,7 @@
 					</p>
 				</div>
 				<div
-					class="mx-10 flex w-100 items-center justify-center overflow-hidden rounded-full bg-white"
+					class="mx-10 flex max-w-100 items-center justify-center overflow-hidden rounded-full bg-white"
 				>
 					<img alt="" src="https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg" />
 				</div>

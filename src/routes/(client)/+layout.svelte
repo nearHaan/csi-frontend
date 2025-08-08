@@ -1,7 +1,17 @@
-<script>
+<script lang="ts">
 	import '../../app.css';
 	import { Menu } from '@lucide/svelte';
 	let { children } = $props();
+
+	let isMenuOpen: boolean = $state(false);
+
+	function toggleMenu(): void {
+		isMenuOpen = !isMenuOpen;
+	}
+
+	function closeMenu(): void {
+		isMenuOpen = false;
+	}
 </script>
 
 <svelte:head>
@@ -10,14 +20,16 @@
 
 <div class="bg-[#222222] font-mono text-white">
 	<header
-		class="sticky top-0 z-10 flex w-full justify-center border-b-1 border-black bg-transparent backdrop-blur-2xl duration-300 ease-in-out"
+		class="sticky top-0 z-10 flex h-20 w-full justify-center border-b-1 border-black bg-transparent backdrop-blur-2xl duration-300 ease-in-out"
 	>
 		<nav class="flex w-full max-w-6xl justify-between border-x-1 border-black p-5">
 			<div class="flex items-center gap-2">
 				<img class="h-10 text-white" src="./images/csi_logo.png" alt="organisation" />
 			</div>
 			<div class="flex cursor-pointer items-center min-sm:hidden">
-				<Menu />
+				<button onclick={toggleMenu} aria-label="Toggle menu">
+					<Menu />
+				</button>
 			</div>
 			<div class="flex items-center max-sm:hidden">
 				<ul class="flex gap-5">
@@ -37,11 +49,72 @@
 			</div>
 		</nav>
 	</header>
+	{#if isMenuOpen}
+		<div
+			class="fixed inset-0 z-20 bg-[#00000050] min-sm:hidden"
+			onclick={closeMenu}
+			onkeydown={(e) => e.key === 'Escape' && closeMenu()}
+			role="button"
+			tabindex="0"
+		></div>
+
+		<!-- Mobile menu -->
+		<div
+			class="fixed top-0 right-0 z-30 h-screen w-64 transform bg-[#222222] shadow-lg transition-transform duration-300 ease-in-out min-sm:hidden"
+		>
+			<div class="h-20 flex items-center justify-end border-b-1 border-black p-5">
+				<button onclick={closeMenu} aria-label="Toggle menu">
+					<Menu />
+				</button>
+			</div>
+
+			<nav class="p-5">
+				<ul class="space-y-4">
+					<li>
+						<a
+							href="/"
+							class="block py-2 text-lg transition-colors hover:text-gray-300"
+							onclick={closeMenu}
+						>
+							Home
+						</a>
+					</li>
+					<li>
+						<a
+							href="/team"
+							class="block py-2 text-lg transition-colors hover:text-gray-300"
+							onclick={closeMenu}
+						>
+							Team
+						</a>
+					</li>
+					<li>
+						<a
+							href="/events"
+							class="block py-2 text-lg transition-colors hover:text-gray-300"
+							onclick={closeMenu}
+						>
+							Events
+						</a>
+					</li>
+					<li>
+						<a
+							href="/register"
+							class="block py-2 text-lg text-[#008CFF] transition-colors hover:text-gray-300"
+							onclick={closeMenu}
+						>
+							Login
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	{/if}
 	<main class="flex min-h-screen justify-center">
 		{@render children?.()}
 	</main>
-	<footer class="border-t-1 border-black bg-[#222222] text-white flex justify-center">
-		<div class="flex flex-col justify-center w-full max-w-6xl p-4 border-black border-x-1">
+	<footer class="flex justify-center border-t-1 border-black bg-[#222222] text-white">
+		<div class="flex w-full max-w-6xl flex-col justify-center border-x-1 border-black p-4">
 			<div class="min-sm:flex">
 				<div class="flex flex-col justify-center">
 					<img class="h-20 w-30 text-white" src="./images/csi_logo.png" alt="organisation" />
