@@ -3,7 +3,13 @@
 	import type { Event } from '$lib/types';
 	import { Power } from '@lucide/svelte';
 
-	let isLoggedin = true;
+	let isLoggedin: boolean = $state(false);
+	let isLightOn: boolean = $state(false);
+
+    function toggleLight(): void {
+		isLightOn = !isLightOn;
+	}
+
 	const myEvents: Event[] = [
 		{
 			id: 1,
@@ -46,7 +52,7 @@
 	<!-- First Section -->
 	<section id="hero" class="relative flex min-h-screen flex-col items-center justify-start border-x-1 border-black">
 		<div class="flex w-full items-center justify-between border-b-1 border-black">
-			<div>
+			<div class="{isLightOn?"shadow-lg":""}">
 				<svg
 					width="111"
 					height="130"
@@ -54,14 +60,15 @@
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-					<path d="M0.5 128.221L0.5 1.7793L110.001 65L0.5 128.221Z" fill="#313131" stroke="black" />
+					<path d="M0.5 128.221L0.5 1.7793L110.001 65L0.5 128.221Z" fill={isLightOn?"#bfbfbf":"#313131"} stroke="black" />
 				</svg>
 			</div>
-			<div
+			<button
 				class="flex h-[130px] w-[130px] items-center justify-center rounded-full border-1 border-black bg-[#1B1B1B]"
+				onclick={toggleLight}
 			>
 				<Power />
-			</div>
+		</button>
 		</div>
 		{#if !isLoggedin}
 			<div class="h-full w-full">
