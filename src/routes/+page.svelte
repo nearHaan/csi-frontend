@@ -70,6 +70,11 @@
 				<span>WHAT DO WE DO?</span>
 				<span>WHAT DO WE DO?</span>
 				<span>WHAT DO WE DO?</span>
+                <span>WHAT DO WE DO?</span>
+				<span>WHAT DO WE DO?</span>
+				<span>WHAT DO WE DO?</span>
+				<span>WHAT DO WE DO?</span>
+				<span>WHAT DO WE DO?</span>
 			</div>
 		</div>
 		<div class="flex max-md:flex-col-reverse h-full items-center justify-center p-5">

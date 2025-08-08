@@ -2,7 +2,7 @@
 	<div
 		class="flex h-40 w-full max-w-6xl items-center justify-center border-x-1 border-b border-black"
 	>
-		<h1 class="text-4xl">MEET OUR TEAM</h1>
+		<h1 class="text-5xl">MEET OUR TEAM</h1>
 	</div>
 	<div
 		class="mx-auto grid w-full max-w-6xl grid-cols-2 place-items-center justify-center gap-2 border-x-1 border-black p-5 sm:grid-cols-3 md:grid-cols-4"
