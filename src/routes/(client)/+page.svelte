@@ -1,15 +1,17 @@
 <script lang="ts">
 	import { Power } from '@lucide/svelte';
+
+	let isLoggedin = true;
 </script>
 
 <svelte:head>
 	<title>CSI - Computer Society of India</title>
 </svelte:head>
 
-<main class="overflow-hidden bg-[#222222] text-white max-w-6xl flex flex-col justify-center">
+<main class="flex w-full max-w-6xl flex-col justify-center overflow-hidden bg-[#222222] text-white">
 	<!-- First Section -->
-	<section id="hero" class="relative flex min-h-screen flex-col items-center justify-center">
-		<div class="flex w-full items-center justify-between border-x-1 border-black">
+	<section id="hero" class="relative flex min-h-screen flex-col items-center justify-start">
+		<div class="flex w-full items-center justify-between border-r-1 border-b-1 border-black">
 			<div>
 				<svg
 					width="111"
@@ -27,75 +29,101 @@
 				<Power />
 			</div>
 		</div>
-		<div class="h-full w-full border-black border-t-1 border-x-1">
-			<div class="mx-4 max-md:m-10 flex max-md:flex-col items-center overflow-hidden rounded-4xl min-lg:rounded-4xl bg-[#2D2D2D]">
-				<img
-					src="https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg"
-					class="max-md:w-full min-md:max-w-100 bg-blue-100"
-					alt=""
-				/>
-				<div class="p-8 w-full">
-					<h1 class="text-4xl">WELCOME TO CSI</h1>
-					<p class="mt-4 text-sm">
-						The Computer Society of India (CSI) - TKMCE Chapter is a vibrant community of tech enthusiasts, developers, and innovators at TKM College of Engineering. As a proud extension of India’s premier body of IT professionals, we aim to nurture talent, foster creativity, and provide a platform for students to explore and excel in the world of technology.
-					</p>
-					<button class="mt-10 rounded-full bg-[#008CFF] p-3">Ready to join CSI?</button>
+		{#if !isLoggedin}
+			<div class="h-full w-full border-x-1 border-black">
+				<div
+					class="mx-4 mt-4 flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col min-lg:rounded-4xl"
+				>
+					<img
+						src="https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg"
+						class="bg-blue-100 max-md:w-full min-md:max-w-100"
+						alt=""
+					/>
+					<div class="w-full p-8">
+						<h1 class="text-4xl">WELCOME TO CSI</h1>
+						<p class="mt-4 text-sm">
+							The Computer Society of India (CSI) - TKMCE Chapter is a vibrant community of tech
+							enthusiasts, developers, and innovators at TKM College of Engineering. As a proud
+							extension of India’s premier body of IT professionals, we aim to nurture talent,
+							foster creativity, and provide a platform for students to explore and excel in the
+							world of technology.
+						</p>
+						<button class="mt-10 rounded-full bg-[#008CFF] p-3">Ready to join CSI?</button>
+					</div>
 				</div>
 			</div>
-		</div>
+		{/if}
+		{#if isLoggedin}
+			<div class="m-4 p-4 shadow-[4px_4px_0_0_black] border-1">
+				<h2 class="text-2xl">My Events</h2>
+				<div class="">
+					//
+				</div>
+			</div>
+		{/if}
 	</section>
 
 	<!-- About Section -->
-	<section id="about" class="relative flex min-h-screen flex-col items-center bg-[#222222] border-black border-1">
-		<div class="grid w-full grid-cols-3 border-y-1 border-black bg-[#1B1B1B]">
-			<div class="col-span-1 w-full bg-[#2D2D2D] px-10 py-4 text-4xl">WHO ARE WE?</div>
-			<div class="col-span-2 w-full"></div>
-			<div class="col-span-1 w-full"></div>
-			<div class="col-span-2 w-full bg-[#2D2D2D] px-10 py-4 text-4xl">
-				<p class="text-lg">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius dapibus ante at
-					interdum. Maecenas elit velit, interdum non congue at, porta eu lorem. Curabitur id sem
-					pretium, lacinia diam sit amet, dignissim odio. Pellentesque iaculis arcu id elementum
-					facilisis. Etiam sodales id lacus at ornare.
-				</p>
+	{#if !isLoggedin}
+		<section
+			id="about"
+			class="relative flex min-h-screen flex-col items-center border-1 border-black bg-[#222222]"
+		>
+			<div class="grid w-full grid-cols-3 border-y-1 border-black bg-[#1B1B1B]">
+				<div class="col-span-1 w-full bg-[#2D2D2D] px-10 py-4 text-4xl">WHO ARE WE?</div>
+				<div class="col-span-2 w-full"></div>
+				<div class="col-span-1 w-full"></div>
+				<div class="col-span-2 w-full bg-[#2D2D2D] px-10 py-4 text-4xl">
+					<p class="text-lg">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius dapibus ante at
+						interdum. Maecenas elit velit, interdum non congue at, porta eu lorem. Curabitur id sem
+						pretium, lacinia diam sit amet, dignissim odio. Pellentesque iaculis arcu id elementum
+						facilisis. Etiam sodales id lacus at ornare.
+					</p>
+				</div>
 			</div>
-		</div>
-		<div class="my-4 flex items-center marquee-container border-y-1 border-black p-5">
-			<div class="marquee-track font-bold text-[#2D2D2D] text-5xl">
-				<span>WHAT DO WE DO?</span>
-				<span>WHAT DO WE DO?</span>
-				<span>WHAT DO WE DO?</span>
-				<span>WHAT DO WE DO?</span>
-				<span>WHAT DO WE DO?</span>
-                <span>WHAT DO WE DO?</span>
-				<span>WHAT DO WE DO?</span>
-				<span>WHAT DO WE DO?</span>
-				<span>WHAT DO WE DO?</span>
-				<span>WHAT DO WE DO?</span>
+			<div class="marquee-container my-4 flex items-center border-y-1 border-black p-5">
+				<div class="marquee-track text-5xl font-bold text-[#2D2D2D]">
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+					<span>WHAT DO WE DO?</span>
+				</div>
 			</div>
-		</div>
-		<div class="flex max-md:flex-col-reverse h-full items-center justify-center p-5">
-			<div class="w-fit my-4 flex">
-				<p class="text-lg mx-2">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius dapibus ante at
-					interdum. Maecenas elit velit, interdum non congue at, porta eu lorem. Curabitur id sem
-					pretium, lacinia diam sit amet, dignissim odio. Pellentesque iaculis arcu id elementum
-					facilisis. Etiam sodales id lacus at ornare.
-				</p>
+			<div class="flex h-full items-center justify-center p-5 max-md:flex-col-reverse">
+				<div class="my-4 flex w-fit">
+					<p class="mx-2 text-lg">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius dapibus ante at
+						interdum. Maecenas elit velit, interdum non congue at, porta eu lorem. Curabitur id sem
+						pretium, lacinia diam sit amet, dignissim odio. Pellentesque iaculis arcu id elementum
+						facilisis. Etiam sodales id lacus at ornare.
+					</p>
+				</div>
+				<div
+					class="mx-10 flex w-100 items-center justify-center overflow-hidden rounded-full bg-white"
+				>
+					<img alt="" src="https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg" />
+				</div>
 			</div>
-			<div class="mx-10 w-100 rounded-full bg-white flex items-center justify-center overflow-hidden">
-				<img alt="" src="https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg" />
-			</div>
-		</div>
-	</section>
+		</section>
 
-	<!-- Join Section -->
-	<section id="join" class="relative flex py-20 items-center justify-center bg-[#22222] border-black border-x-1">
-		<div class="relative z-10 text-center">
-			<h2 class="mb-12 text-3xl font-light tracking-wider md:text-5xl">
-				SO ARE YOU READY TO JOIN CSI?
-			</h2>
-            <button class="mt-10 rounded-full bg-[#008CFF] py-5 px-10">YES I AM!</button>
-		</div>
-	</section>
+		<!-- Join Section -->
+		<section
+			id="join"
+			class="relative flex items-center justify-center border-x-1 border-black bg-[#22222] py-20"
+		>
+			<div class="relative z-10 text-center">
+				<h2 class="mb-12 text-3xl font-light tracking-wider md:text-5xl">
+					SO ARE YOU READY TO JOIN CSI?
+				</h2>
+				<button class="mt-10 rounded-full bg-[#008CFF] px-10 py-5">YES I AM!</button>
+			</div>
+		</section>
+	{/if}
 </main>
