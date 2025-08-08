@@ -1,7 +1,41 @@
 <script lang="ts">
+	import EventCard from '$lib/components/event-card.svelte';
+	import type { Event } from '$lib/types';
 	import { Power } from '@lucide/svelte';
 
 	let isLoggedin = true;
+	const myEvents: Event[] = [
+		{
+			id: 1,
+			title: 'LINKEDIN 101',
+			subtitle: 'PROFILE POST OPPORTUNITIES',
+			date: '12 OCT 2024',
+			time: '8:30 - 9:30pm',
+			location: 'G-Meet',
+			fees: 0,
+			image: 'https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg'
+		},
+		{
+			id: 2,
+			title: 'LINKEDIN 101',
+			subtitle: 'PROFILE POST OPPORTUNITIES',
+			date: '12 OCT 2024',
+			time: '8:30 - 9:30pm',
+			location: 'G-Meet',
+			fees: 0,
+			image: 'https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg'
+		},
+		{
+			id: 3,
+			title: 'LINKEDIN 101',
+			subtitle: 'PROFILE POST OPPORTUNITIES',
+			date: '12 OCT 2024',
+			time: '8:30 - 9:30pm',
+			location: 'G-Meet',
+			fees: 0,
+			image: 'https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg'
+		}
+	];
 </script>
 
 <svelte:head>
@@ -56,8 +90,10 @@
 		{#if isLoggedin}
 			<div class="m-4 p-4 shadow-[4px_4px_0_0_black] border-1">
 				<h2 class="text-2xl">My Events</h2>
-				<div class="">
-					//
+				<div class="flex gap-4">
+					{#each myEvents as event}
+						<EventCard event = {event}/>
+					{/each}
 				</div>
 			</div>
 		{/if}
