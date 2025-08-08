@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<div class="flex w-full justify-center border-y-1 border-black">
-		<div class="flex h-20 w-full max-w-6xl items-center justify-start">
+		<div class="flex h-20 w-full max-w-6xl items-center justify-start border-x-1 border-black">
 			<h2 class="flex h-full items-center justify-center bg-black px-10 text-2xl">TECH TEAM</h2>
 		</div>
 	</div>
@@ -58,7 +58,7 @@
 		</div>
 	</div>
 	<div class="flex w-full justify-center border-y-1 border-black">
-		<div class="flex h-20 w-full max-w-6xl items-center justify-start">
+		<div class="flex h-20 w-full max-w-6xl items-center justify-start border-x-1 border-black">
 			<h2 class="flex h-full items-center justify-center bg-black px-10 text-2xl">TECH TEAM</h2>
 		</div>
 	</div>
