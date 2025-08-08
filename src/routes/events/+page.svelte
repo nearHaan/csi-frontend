@@ -1,14 +1,6 @@
 <script lang="ts">
-	interface Event {
-		id: number;
-		title: string;
-		subtitle: string;
-		date: string;
-		time: string;
-		location: string;
-		fees: number;
-		image: string;
-	}
+	import type { Event } from "$lib/types";
+
 	const upcomingEvents: Event[] = [
 		{
 			id: 1,
@@ -81,8 +73,8 @@
 
 <div class="min-h-screen max-w-6xl border-x-1 border-black bg-[#222222]">
 	{#if upcomingEvents.length > 0}
-		<div class="flex w-full justify-center border-y-1 border-black">
-			<div class="flex h-20 w-full max-w-6xl items-center justify-start border-x-1 border-black">
+		<div class="flex w-full justify-center border-b-1 border-black">
+			<div class="flex h-20 w-full max-w-6xl items-center justify-start">
 				<h2 class="flex h-full items-center justify-center bg-black px-10 text-2xl">
 					Upcoming Events
 				</h2>
@@ -116,7 +108,7 @@
 	{#if pastEvents.length > 0}
 		<div class="">
 			<div class="flex w-full justify-center border-y-1 border-black">
-				<div class="flex h-20 w-full max-w-6xl items-center justify-start border-x-1 border-black">
+				<div class="flex h-20 w-full max-w-6xl items-center justify-start">
 					<h2 class="flex h-full items-center justify-center bg-black px-10 text-2xl">
 						Previous Events
 					</h2>

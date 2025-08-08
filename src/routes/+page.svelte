@@ -37,10 +37,7 @@
 				<div class="p-8 w-full">
 					<h1 class="text-4xl">WELCOME TO CSI</h1>
 					<p class="mt-4 text-sm">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius dapibus ante at
-						interdum. Maecenas elit velit, interdum non congue at, porta eu lorem. Curabitur id sem
-						pretium, lacinia diam sit amet, dignissim odio. Pellentesque iaculis arcu id elementum
-						facilisis. Etiam sodales id lacus at ornare.
+						The Computer Society of India (CSI) - TKMCE Chapter is a vibrant community of tech enthusiasts, developers, and innovators at TKM College of Engineering. As a proud extension of India’s premier body of IT professionals, we aim to nurture talent, foster creativity, and provide a platform for students to explore and excel in the world of technology.
 					</p>
 					<button class="mt-10 rounded-full bg-[#008CFF] p-3">Ready to join CSI?</button>
 				</div>
@@ -93,7 +90,7 @@
 	</section>
 
 	<!-- Join Section -->
-	<section id="join" class="relative flex min-h-screen items-center justify-center bg-[#22222] border-black border-x-1">
+	<section id="join" class="relative flex py-20 items-center justify-center bg-[#22222] border-black border-x-1">
 		<div class="relative z-10 text-center">
 			<h2 class="mb-12 text-3xl font-light tracking-wider md:text-5xl">
 				SO ARE YOU READY TO JOIN CSI?
