@@ -1,3 +1,5 @@
+import { loginUser } from "$lib/api/auth";
+import { validateLogin } from "$lib/utils/validation";
 import { fail, type Actions } from "@sveltejs/kit";
 
 export const actions = {
@@ -6,14 +8,26 @@ export const actions = {
         const email = data.get('email');
         const password = data.get('password');
 
-        if(typeof email !== 'string' || typeof password !== 'string' || !email || !password){
-            //
-        } else {
-            return fail(400, { message: "Please provide your email and password"})
+        const error = !validateLogin(email, password);
+        if(error){
+            return fail(400, {message: error});
         }
 
-        console.log('Email:', email);
-        console.log('Password:', password);
-        return { success: true };
+        try{
+            const { access_token, student } = await loginUser(email as string, password as string);
+
+            cookies.set('auth_token', access_token, {
+                httpOnly: true,
+                path: '/',
+                maxAge: 60 * 60 * 24
+            });
+
+            console.log("Access token: ",access_token);
+            console.log("Student: ",student);
+
+            return { success: true, student};
+        } catch (err) {
+            return fail(401, { message: (err as Error).message})
+        }
     }
 } satisfies Actions;

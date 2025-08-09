@@ -1,7 +1,25 @@
-<script>
-	import { enhance } from "$app/forms";
+<script lang="ts">
+	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
+	import type { SubmitFunction } from '@sveltejs/kit';
 
+	const handleEnhance: SubmitFunction = () => {
+		return async ({ result }) => {
+			if (result.type === 'success' && result.status === 200) {
+				goto('/', { invalidateAll: true });
+			} else if (result.type === 'redirect') {
+				goto(result.location, { invalidateAll: true });
+			} else {
+				const msg =
+					result.type === 'error'
+						? result.error.message
+						: result.data?.message || 'Something went wrong';
+				console.error(msg);
+			}
+		};
+	};
 </script>
+
 <div class="flex min-h-screen w-full flex-col items-center bg-white p-10 text-black">
 	<h1 class="text-5xl text-[#222222]">WELCOME BACK</h1>
 	<div class="mt-10 min-w-sm border-1 border-black shadow-[4px_4px_0_0_black]">
@@ -13,17 +31,26 @@
 			</div>
 			<h3 class="w-fit bg-[#BFBFBF] p-4">Login</h3>
 		</div>
-		<form action="?/login" method="post" use:enhance = {() => {
-			
-		}}>
+		<form
+			action="?/login"
+			method="post"
+			use:enhance={() => {
+				return async ({ result }) => {
+					if (result.type === 'success' && result.status === 200) {
+						goto('/');
+					} else if (result.type === 'redirect') {
+						goto(result.location, { invalidateAll: true });
+					} else {
+						const errorText = result.type === 'error' ? result.error.message : result.data?.message;
+						console.log(errorText);
+					}
+				};
+			}}
+		>
 			<div class="flex w-full flex-col items-center p-4">
 				<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
 					<p class="text-md w-fit">Email</p>
-					<input
-						name="email"
-						class="h-8 w-full rounded-xs border-1 border-black p-2"
-						type="email"
-					/>
+					<input name="text" class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
 					<p class="text-md w-fit">Password</p>
 					<input
 						name="password"
