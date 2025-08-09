@@ -52,7 +52,7 @@
 	<!-- First Section -->
 	<section
 		id="hero"
-		class="relative flex min-h-screen flex-col items-center justify-start border-x-1 border-black"
+		class="relative flex {isLoggedin?"":"min-h-screen"} flex-col items-center justify-start border-x-1 border-black"
 	>
 		<div class="flex w-full items-center justify-between border-b-1 border-black">
 			<div class={isLightOn ? 'animate-pulse' : ''}>
@@ -96,20 +96,8 @@
 							foster creativity, and provide a platform for students to explore and excel in the
 							world of technology.
 						</p>
-						<button class="mt-10 rounded-full bg-[#008CFF] p-3"
-							>Ready to join CSI?</button
-						>
+						<button class="mt-10 rounded-full bg-[#008CFF] p-3">Ready to join CSI?</button>
 					</div>
-				</div>
-			</div>
-		{/if}
-		{#if isLoggedin}
-			<div class="m-4 border-1 border-black p-4 shadow-[4px_4px_0_0_black]">
-				<h2 class="text-2xl">My Events</h2>
-				<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
-					{#each myEvents as event}
-						<EventCard {event} />
-					{/each}
 				</div>
 			</div>
 		{/if}
@@ -175,6 +163,42 @@
 					SO ARE YOU READY TO JOIN CSI?
 				</h2>
 				<button class="mt-10 rounded-full bg-[#008CFF] px-10 py-5">YES I AM!</button>
+			</div>
+		</section>
+	{/if}
+	{#if isLoggedin}
+		<section id="leaderboard" class="border-x-1 border-black p-4">
+			<div class="m-4 border-1 border-black p-4 shadow-[4px_4px_0_0_black]">
+				<h2 class="text-2xl">My Events</h2>
+				<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
+					{#each myEvents as event}
+						<EventCard {event} />
+					{/each}
+				</div>
+			</div>
+			<div class="m-4 border-1 border-black p-4 shadow-[4px_4px_0_0_black]">
+				<h2 class="text-2xl">LeaderBoard</h2>
+				<table class="table-auto border-1 border-black">
+					<thead>
+						<tr>
+							<th scope="col" class="px-6">Rank</th>
+							<th scope="col" class="w-full px-6 py-3 text-left">Name</th>
+							<th scope="col" class="px-6 py-3">Points</th>
+						</tr>
+					</thead>
+					<tbody class="text-center">
+						<tr class="odd:bg-[#313131] even:bg-[#454545]">
+							<td class="">1</td>
+							<td class="px-6 py-3 text-left">Farhaan</td>
+							<td class="px-6 py-3">25</td>
+						</tr>
+						<tr class="odd:bg-[#313131] even:bg-[#454545]">
+							<td class="">1</td>
+							<td class="px-6 py-3 text-left">Farhaan</td>
+							<td class="px-6 py-3">25</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
 	{/if}
