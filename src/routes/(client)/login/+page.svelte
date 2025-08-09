@@ -1,3 +1,7 @@
+<script>
+	import { enhance } from "$app/forms";
+
+</script>
 <div class="flex min-h-screen w-full flex-col items-center bg-white p-10 text-black">
 	<h1 class="text-5xl text-[#222222]">WELCOME BACK</h1>
 	<div class="mt-10 min-w-sm border-1 border-black shadow-[4px_4px_0_0_black]">
@@ -9,16 +13,31 @@
 			</div>
 			<h3 class="w-fit bg-[#BFBFBF] p-4">Login</h3>
 		</div>
-		<div class="w-full p-4 flex flex-col items-center">
-			<div class="w-full grid grid-cols-[120px_auto] auto-cols-fr gap-5">
-                <p class="text-md w-fit">Email</p>
-                <input class="w-full p-2 h-8 border-black border-1 rounded-xs" type="email"/>
-                <p class="text-md w-fit">Password</p>
-                <input class="w-full p-2 h-8 border-black border-1 rounded-xs" type="password"/>
-            </div>
-            <button class="m-4 px-6 py-3 border-black border-1 bg-[#D9D9D9] hover:bg-black hover:text-white ease-in-out cursor-pointer">
-                Login
-            </button>
-		</div>
+		<form action="?/login" method="post" use:enhance = {() => {
+			
+		}}>
+			<div class="flex w-full flex-col items-center p-4">
+				<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
+					<p class="text-md w-fit">Email</p>
+					<input
+						name="email"
+						class="h-8 w-full rounded-xs border-1 border-black p-2"
+						type="email"
+					/>
+					<p class="text-md w-fit">Password</p>
+					<input
+						name="password"
+						class="h-8 w-full rounded-xs border-1 border-black p-2"
+						type="password"
+					/>
+				</div>
+				<button
+					type="submit"
+					class="m-4 cursor-pointer border-1 border-black bg-[#D9D9D9] px-6 py-3 ease-in-out hover:bg-black hover:text-white"
+				>
+					Login
+				</button>
+			</div>
+		</form>
 	</div>
 </div>
