@@ -52,7 +52,9 @@
 	<!-- First Section -->
 	<section
 		id="hero"
-		class="relative flex {isLoggedin?"":"min-h-screen"} flex-col items-center justify-start border-x-1 border-black"
+		class="relative flex {isLoggedin
+			? ''
+			: 'min-h-screen'} flex-col items-center justify-start border-x-1 border-black"
 	>
 		<div class="flex w-full items-center justify-between border-b-1 border-black">
 			<div class={isLightOn ? 'animate-pulse' : ''}>
@@ -176,29 +178,31 @@
 					{/each}
 				</div>
 			</div>
-			<div class="m-4 border-1 border-black p-4 shadow-[4px_4px_0_0_black]">
-				<h2 class="text-2xl">LeaderBoard</h2>
-				<table class="table-auto border-1 border-black">
-					<thead>
-						<tr>
-							<th scope="col" class="px-6">Rank</th>
-							<th scope="col" class="w-full px-6 py-3 text-left">Name</th>
-							<th scope="col" class="px-6 py-3">Points</th>
-						</tr>
-					</thead>
-					<tbody class="text-center">
-						<tr class="odd:bg-[#313131] even:bg-[#454545]">
-							<td class="">1</td>
-							<td class="px-6 py-3 text-left">Farhaan</td>
-							<td class="px-6 py-3">25</td>
-						</tr>
-						<tr class="odd:bg-[#313131] even:bg-[#454545]">
-							<td class="">1</td>
-							<td class="px-6 py-3 text-left">Farhaan</td>
-							<td class="px-6 py-3">25</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="m-4 flex flex-col border-1 border-black shadow-[4px_4px_0_0_black]">
+				<h2 class="p-4 text-2xl">LeaderBoard</h2>
+				<div class="overflow-auto border-t-1 border-black">
+					<table>
+						<thead>
+							<tr>
+								<th scope="col" class="px-6">Rank</th>
+								<th scope="col" class="w-full px-6 py-3 text-left">Name</th>
+								<th scope="col" class="px-6 py-3">Points</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+							<tr class="odd:bg-[#313131] even:bg-[#454545]">
+								<td class="">1</td>
+								<td class="px-6 py-3 text-left">Farhaan</td>
+								<td class="px-6 py-3">25</td>
+							</tr>
+							<tr class="odd:bg-[#313131] even:bg-[#454545]">
+								<td class="">1</td>
+								<td class="px-6 py-3 text-left">Farhaan</td>
+								<td class="px-6 py-3">25</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</section>
 	{/if}
