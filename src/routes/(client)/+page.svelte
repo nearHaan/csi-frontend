@@ -6,7 +6,7 @@
 	let isLoggedin: boolean = $state(false);
 	let isLightOn: boolean = $state(false);
 
-    function toggleLight(): void {
+	function toggleLight(): void {
 		isLightOn = !isLightOn;
 	}
 
@@ -50,9 +50,12 @@
 
 <main class="flex w-full max-w-6xl flex-col justify-center overflow-hidden bg-[#222222] text-white">
 	<!-- First Section -->
-	<section id="hero" class="relative flex min-h-screen flex-col items-center justify-start border-x-1 border-black">
+	<section
+		id="hero"
+		class="relative flex min-h-screen flex-col items-center justify-start border-x-1 border-black"
+	>
 		<div class="flex w-full items-center justify-between border-b-1 border-black">
-			<div class="{isLightOn ? "animate-pulse" : ""}">
+			<div class={isLightOn ? 'animate-pulse' : ''}>
 				<svg
 					width="111"
 					height="130"
@@ -60,15 +63,19 @@
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-					<path d="M0.5 128.221L0.5 1.7793L110.001 65L0.5 128.221Z" fill={isLightOn?"#bfbfbf":"#313131"} stroke="black" />
+					<path
+						d="M0.5 128.221L0.5 1.7793L110.001 65L0.5 128.221Z"
+						fill={isLightOn ? '#bfbfbf' : '#313131'}
+						stroke="black"
+					/>
 				</svg>
 			</div>
 			<button
 				class="flex h-[130px] w-[130px] items-center justify-center rounded-full border-1 border-black bg-[#1B1B1B]"
 				onclick={toggleLight}
 			>
-				<Power color = {isLightOn ? "#008CFF":"#ffffff"}/>
-		</button>
+				<Power color={isLightOn ? '#008CFF' : '#ffffff'} />
+			</button>
 		</div>
 		{#if !isLoggedin}
 			<div class="h-full w-full">
@@ -89,17 +96,19 @@
 							foster creativity, and provide a platform for students to explore and excel in the
 							world of technology.
 						</p>
-						<button class="animate-pulse mt-10 rounded-full bg-[#008CFF] p-3">Ready to join CSI?</button>
+						<button class="mt-10 rounded-full bg-[#008CFF] p-3"
+							>Ready to join CSI?</button
+						>
 					</div>
 				</div>
 			</div>
 		{/if}
 		{#if isLoggedin}
-			<div class="m-4 p-4 shadow-[4px_4px_0_0_black] border-black border-1">
+			<div class="m-4 border-1 border-black p-4 shadow-[4px_4px_0_0_black]">
 				<h2 class="text-2xl">My Events</h2>
-				<div class="flex flex-col min-sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+				<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
 					{#each myEvents as event}
-						<EventCard event = {event}/>
+						<EventCard {event} />
 					{/each}
 				</div>
 			</div>
@@ -126,7 +135,7 @@
 				</div>
 			</div>
 			<div class="marquee-container my-4 flex items-center border-y-1 border-black p-5">
-				<div class="{isLightOn?"marquee-track":""} text-5xl font-bold text-[#2D2D2D]">
+				<div class="{isLightOn ? 'marquee-track' : ''} text-5xl font-bold text-[#2D2D2D]">
 					<span>WHAT DO WE DO?</span>
 					<span>WHAT DO WE DO?</span>
 					<span>WHAT DO WE DO?</span>
