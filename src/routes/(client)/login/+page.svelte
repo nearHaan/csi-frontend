@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import type { SubmitFunction } from '@sveltejs/kit';
+
+	let errorText = $state('');
 
 	const handleEnhance: SubmitFunction = () => {
 		return async ({ result }) => {
@@ -14,6 +16,7 @@
 					result.type === 'error'
 						? result.error.message
 						: result.data?.message || 'Something went wrong';
+					errorText = msg;
 				console.error(msg);
 			}
 		};
@@ -34,29 +37,21 @@
 		<form
 			action="?/login"
 			method="post"
-			use:enhance={() => {
-				return async ({ result }) => {
-					if (result.type === 'success' && result.status === 200) {
-						goto('/');
-					} else if (result.type === 'redirect') {
-						goto(result.location, { invalidateAll: true });
-					} else {
-						const errorText = result.type === 'error' ? result.error.message : result.data?.message;
-						console.log(result);
-					}
-				};
-			}}
+			use:enhance={handleEnhance}
 		>
 			<div class="flex w-full flex-col items-center p-4">
 				<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
 					<p class="text-md w-fit">Email</p>
-					<input name="email" class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
+					<input name="email" class="h-8 w-full rounded-xs border-1 border-black p-2 {errorText? "border-red-500":""}" type="email" />
 					<p class="text-md w-fit">Password</p>
 					<input
 						name="password"
-						class="h-8 w-full rounded-xs border-1 border-black p-2"
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorText? "border-red-500":""}"
 						type="password"
 					/>
+				</div>
+				<div class="mt-4 h-5 w-full flex items-center justify-start">
+					<p class="{errorText?"block":"hidden"} text-red-500 text-sm">{errorText}</p>
 				</div>
 				<button
 					type="submit"
