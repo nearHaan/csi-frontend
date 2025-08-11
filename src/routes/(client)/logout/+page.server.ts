@@ -8,5 +8,6 @@ export const load: PageServerLoad = async ({ cookies, locals }) => {
     cookies.delete('access_token', { path: '/'});
     cookies.delete('refresh_token', { path: '/'});
 
-    return redirect(307, '/login');
+    //should reload home page after redirect
+    return redirect(307, '/');
 }

@@ -4,19 +4,16 @@
 	import { Power } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 
-	let isLoggedin: boolean = $state(false);
-	let isLightOn: boolean = $state(false);
 	let { data } = $props();
+	let isLoggedin: boolean = $derived(!!data.student);
+	let isLightOn: boolean = $state(false);
 
 	function toggleLight(): void {
 		isLightOn = !isLightOn;
 	}
 
-	onMount(() => {
-		console.log(data.student?.name);
-		if (data.student) {
-			isLoggedin = true;
-		}
+	$effect(() => {
+		isLoggedin = !!data.student;
 	});
 
 	const myEvents: Event[] = [
@@ -93,9 +90,7 @@
 				<div
 					class="min-lg:rounded-6xl mx-4 mt-4 flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col"
 				>
-					<div
-						class="flex h-full w-full flex-col items-center justify-center min-xl:max-w-110"
-					>
+					<div class="flex h-full w-full flex-col items-center justify-center min-xl:max-w-110">
 						<img src="/images/csi-home-illus.png" class="w-100" alt="" />
 					</div>
 					<div class="w-full p-8">
@@ -158,7 +153,7 @@
 				</div>
 				<div class="flex flex-col items-center">
 					<div
-						class="mx-10 flex w-full max-w-110 items-center justify-center overflow-hidden /rounded-full /bg-white max-md:max-w-100 min-md:max-w-100"
+						class="/rounded-full /bg-white mx-10 flex w-full max-w-110 items-center justify-center overflow-hidden max-md:max-w-100 min-md:max-w-100"
 					>
 						<img class="w-90" alt="" src="/images/csi-whatwedo-illus.png" />
 					</div>
