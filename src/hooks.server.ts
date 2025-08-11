@@ -8,7 +8,7 @@ export const handle: Handle = async({ event, resolve }) => {
         try{
             const res = await verifyToken(token);
             console.log("Server Data: ",res.student);
-            if(res.ok){
+            if(res.student){
                 event.locals.student = res.student;
             } else {
                 event.locals.student = null;

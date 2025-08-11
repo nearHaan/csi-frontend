@@ -13,10 +13,6 @@
 	}
 
 	onMount(() => {
-		console.log('Full data object:', data);
-		console.log('Student data:', data?.student);
-		console.log('Student exists?', !!data?.student);
-
 		if (data.student) {
 			isLoggedin = true;
 		}
