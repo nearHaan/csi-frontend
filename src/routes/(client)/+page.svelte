@@ -3,7 +3,7 @@
 	import type { Event } from '$lib/types';
 	import { Power } from '@lucide/svelte';
 
-	let isLoggedin: boolean = $state(true);
+	let isLoggedin: boolean = $state(false);
 	let isLightOn: boolean = $state(false);
 
 	function toggleLight(): void {

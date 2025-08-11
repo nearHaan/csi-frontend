@@ -42,7 +42,7 @@
 						goto(result.location, { invalidateAll: true });
 					} else {
 						const errorText = result.type === 'error' ? result.error.message : result.data?.message;
-						console.log(errorText);
+						console.log(result);
 					}
 				};
 			}}
@@ -50,7 +50,7 @@
 			<div class="flex w-full flex-col items-center p-4">
 				<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
 					<p class="text-md w-fit">Email</p>
-					<input name="text" class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
+					<input name="email" class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
 					<p class="text-md w-fit">Password</p>
 					<input
 						name="password"

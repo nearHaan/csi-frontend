@@ -8,15 +8,21 @@ export const actions = {
         const email = data.get('email');
         const password = data.get('password');
 
-        const error = !validateLogin(email, password);
+        const error = validateLogin(email, password);
         if(error){
             return fail(400, {message: error});
         }
 
         try{
-            const { access_token, student } = await loginUser(email as string, password as string);
+            const { access_token, refresh_token, student } = await loginUser(email as string, password as string);
 
-            cookies.set('auth_token', access_token, {
+            cookies.set('access_token', access_token, {
+                httpOnly: true,
+                path: '/',
+                maxAge: 60 * 60 * 24
+            });
+
+            cookies.set('refresh_token', refresh_token, {
                 httpOnly: true,
                 path: '/',
                 maxAge: 60 * 60 * 24
