@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../../app.css';
 	import { Menu } from '@lucide/svelte';
-	let { children } = $props();
+	let { children, data } = $props();
 
 	let isMenuOpen: boolean = $state(false);
 
@@ -43,7 +43,7 @@
 						<a href="/events">Events</a>
 					</li>
 					<li>
-						<a class="text-[#008CFF]" href="/login">Login</a>
+						<a class="text-[#008CFF]" href={!data.student?.name ? '/login':'api/logout/'}>{!data.student?.name ? 'Login':'Logout'}</a>
 					</li>
 				</ul>
 			</div>
@@ -99,11 +99,11 @@
 					</li>
 					<li>
 						<a
-							href="/register"
+							href={!data.student?.name ? '/login':'/api/logout/'}
 							class="block py-2 text-lg text-[#008CFF] transition-colors hover:text-gray-300"
 							onclick={closeMenu}
 						>
-							Login
+							{!data.student?.name ? 'Login':'Logout'}
 						</a>
 					</li>
 				</ul>

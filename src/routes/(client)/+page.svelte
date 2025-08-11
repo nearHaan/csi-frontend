@@ -13,6 +13,7 @@
 	}
 
 	onMount(() => {
+		console.log(data.student?.name);
 		if (data.student) {
 			isLoggedin = true;
 		}
