@@ -91,13 +91,13 @@
 		{#if !isLoggedin}
 			<div class="h-full w-full">
 				<div
-					class="mx-4 mt-4 flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col min-lg:rounded-4xl"
+					class="min-lg:rounded-6xl mx-4 mt-4 flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col"
 				>
-					<img
-						src="https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg"
-						class="bg-blue-100 max-md:w-full min-md:max-w-100"
-						alt=""
-					/>
+					<div
+						class="flex h-full w-full flex-col items-center justify-center min-xl:max-w-110"
+					>
+						<img src="/images/csi-home-illus.png" class="w-100" alt="" />
+					</div>
 					<div class="w-full p-8">
 						<h1 class="text-4xl">WELCOME TO CSI</h1>
 						<p class="mt-4 text-sm">
@@ -156,10 +156,12 @@
 						facilisis. Etiam sodales id lacus at ornare.
 					</p>
 				</div>
-				<div
-					class="mx-10 flex max-w-100 items-center justify-center overflow-hidden rounded-full bg-white"
-				>
-					<img alt="" src="https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg" />
+				<div class="flex flex-col items-center">
+					<div
+						class="mx-10 flex w-full max-w-110 items-center justify-center overflow-hidden /rounded-full /bg-white max-md:max-w-100 min-md:max-w-100"
+					>
+						<img class="w-90" alt="" src="/images/csi-whatwedo-illus.png" />
+					</div>
 				</div>
 			</div>
 		</section>

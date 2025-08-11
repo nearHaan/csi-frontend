@@ -43,7 +43,9 @@
 						<a href="/events">Events</a>
 					</li>
 					<li>
-						<a class="text-[#008CFF]" href={!data.student?.name ? '/login':'api/logout/'}>{!data.student?.name ? 'Login':'Logout'}</a>
+						<a class="text-[#008CFF]" href={!data.student?.name ? '/login' : 'api/logout/'}
+							>{!data.student?.name ? 'Login' : 'Logout'}</a
+						>
 					</li>
 				</ul>
 			</div>
@@ -62,7 +64,7 @@
 		<div
 			class="fixed top-0 right-0 z-30 h-screen w-64 transform bg-[#222222] shadow-lg transition-transform duration-300 ease-in-out min-sm:hidden"
 		>
-			<div class="h-20 flex items-center justify-end border-b-1 border-black p-5">
+			<div class="flex h-20 items-center justify-end border-b-1 border-black p-5">
 				<button onclick={closeMenu} aria-label="Toggle menu">
 					<Menu />
 				</button>
@@ -99,11 +101,11 @@
 					</li>
 					<li>
 						<a
-							href={!data.student?.name ? '/login':'/api/logout/'}
+							href={!data.student?.name ? '/login' : '/api/logout/'}
 							class="block py-2 text-lg text-[#008CFF] transition-colors hover:text-gray-300"
 							onclick={closeMenu}
 						>
-							{!data.student?.name ? 'Login':'Logout'}
+							{!data.student?.name ? 'Login' : 'Logout'}
 						</a>
 					</li>
 				</ul>
@@ -127,7 +129,10 @@
 				</div>
 			</div>
 			<div class="left-20 bg-[#222222] p-2 text-xs text-[#818181]">
-				© Copyright CSI TKMCE. All Rights Reserved
+				<a class="w-full text-[10px] text-[#707070]" href="https://storyset.com/technology"
+					>Technology illustrations by Storyset</a
+				>
+				<p class="mt-2">© Copyright CSI TKMCE. All Rights Reserved</p>
 			</div>
 		</div>
 	</footer>
