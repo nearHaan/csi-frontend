@@ -172,7 +172,7 @@
 			class="relative flex items-center justify-center border-x-1 border-black bg-[#22222] py-20"
 		>
 			<div class="relative z-10 text-center">
-				<h2 class="mb-12 text-3xl font-light tracking-wider md:text-5xl">
+				<h2 class="mb-12 text-2xl font-light tracking-wider max-md:w-80 md:text-3xl">
 					SO ARE YOU READY TO JOIN CSI?
 				</h2>
 				<button class="mt-10 rounded-full bg-[#008CFF] px-10 py-5">YES I AM!</button>
