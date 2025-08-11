@@ -1,3 +1,19 @@
+export type Student = {
+    id: number;
+    user: {
+        id: number;
+        email: string;
+        is_staff: boolean;
+        is_superuser: boolean;
+        date_joined: string;
+    };
+    name: string;
+    phone_number: string;
+    department: string;
+    batch: string;
+    year: number;
+};
+
 export type Event = {
     id: number;
     title: string;

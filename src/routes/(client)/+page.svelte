@@ -2,13 +2,25 @@
 	import EventCard from '$lib/components/event-card.svelte';
 	import type { Event } from '$lib/types';
 	import { Power } from '@lucide/svelte';
+	import { onMount } from 'svelte';
 
 	let isLoggedin: boolean = $state(false);
 	let isLightOn: boolean = $state(false);
+	let { data } = $props();
 
 	function toggleLight(): void {
 		isLightOn = !isLightOn;
 	}
+
+	onMount(() => {
+		console.log('Full data object:', data);
+		console.log('Student data:', data?.student);
+		console.log('Student exists?', !!data?.student);
+
+		if (data.student) {
+			isLoggedin = true;
+		}
+	});
 
 	const myEvents: Event[] = [
 		{

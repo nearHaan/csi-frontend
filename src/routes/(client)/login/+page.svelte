@@ -16,7 +16,7 @@
 					result.type === 'error'
 						? result.error.message
 						: result.data?.message || 'Something went wrong';
-					errorText = msg;
+				errorText = msg;
 				console.error(msg);
 			}
 		};
@@ -34,24 +34,28 @@
 			</div>
 			<h3 class="w-fit bg-[#BFBFBF] p-4">Login</h3>
 		</div>
-		<form
-			action="?/login"
-			method="post"
-			use:enhance={handleEnhance}
-		>
+		<form action="?/login" method="post" use:enhance={handleEnhance}>
 			<div class="flex w-full flex-col items-center p-4">
 				<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
 					<p class="text-md w-fit">Email</p>
-					<input name="email" class="h-8 w-full rounded-xs border-1 border-black p-2 {errorText? "border-red-500":""}" type="email" />
+					<input
+						name="email"
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorText
+							? 'border-red-500'
+							: ''}"
+						type="email"
+					/>
 					<p class="text-md w-fit">Password</p>
 					<input
 						name="password"
-						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorText? "border-red-500":""}"
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorText
+							? 'border-red-500'
+							: ''}"
 						type="password"
 					/>
 				</div>
-				<div class="mt-4 h-5 w-full flex items-center justify-start">
-					<p class="{errorText?"block":"hidden"} text-red-500 text-sm">{errorText}</p>
+				<div class="mt-4 flex h-5 w-full items-center justify-start">
+					<p class="{errorText ? 'block' : 'hidden'} text-sm text-red-500">{errorText}</p>
 				</div>
 				<button
 					type="submit"
@@ -59,6 +63,10 @@
 				>
 					Login
 				</button>
+				<div class="flex justify-center gap-2 text-sm">
+					<p>Don't have an account?</p>
+					<a class="text-[#008CFF]" href="/register">Register Here</a>
+				</div>
 			</div>
 		</form>
 	</div>
