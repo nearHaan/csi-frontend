@@ -1,9 +1,10 @@
 import { registerUser } from "$lib/api/auth";
+import { APIError } from "$lib/errors.ts/APIError";
 import { validateRegistration } from "$lib/utils/validation";
 import { fail, type Actions } from "@sveltejs/kit";
 
 export const actions = {
-    register: async ({ locals ,cookies, request }) => {
+    register: async ({ locals, cookies, request }) => {
         const data = await request.formData();
         const name = data.get('name');
         const email = data.get('email');
@@ -13,12 +14,12 @@ export const actions = {
         const phone_number = data.get('phone_number');
         const password = data.get('password');
         const confirm_password = data.get('confirm_password');
-        const error = validateRegistration(name, email, department, batch, year, phone_number, password, confirm_password);    
-        if(error){
-            return fail(400, {message: error});
+        const error = validateRegistration(name, email, department, batch, year, phone_number, password, confirm_password);
+        if (error) {
+            return fail(400, { message: error });
         }
 
-        try{
+        try {
             const { access_token, refresh_token, student } = await registerUser(name as string, email as string, department as string, batch as string, year as unknown as number, phone_number as string, password as string, confirm_password as string);
 
             cookies.set('access_token', access_token, {
@@ -33,12 +34,16 @@ export const actions = {
                 maxAge: 60 * 60 * 24
             });
 
-            console.log("Access token: ",access_token);
-            console.log("Student: ",student);
+            console.log("Access token: ", access_token);
+            console.log("Student: ", student);
 
-            return { success: true, student};
+            return { success: true, student };
         } catch (err) {
-            return fail(401, { message: (err as Error).message})
+            if (err instanceof APIError) {
+                return fail(401, { message: (err as APIError).message, errorfield: (err as APIError).errorfield });
+            } else {
+                return fail(401, { message: (err as APIError).message });
+            }
         }
     }
 } satisfies Actions;

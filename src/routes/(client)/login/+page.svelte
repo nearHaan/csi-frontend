@@ -4,6 +4,7 @@
 	import type { SubmitFunction } from '@sveltejs/kit';
 
 	let errorText = $state('');
+	let errorField = $state('');
 
 	const handleEnhance: SubmitFunction = () => {
 		return async ({ result }) => {
@@ -16,7 +17,9 @@
 					result.type === 'error'
 						? result.error.message
 						: result.data?.message || 'Something went wrong';
+				const errorfield = result.type !== 'error'?result.data?.errorfield || '' : '';
 				errorText = msg;
+				errorField = errorfield;
 				console.error(msg);
 			}
 		};
@@ -40,7 +43,7 @@
 					<p class="text-md w-fit">Email</p>
 					<input
 						name="email"
-						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorText
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField==='email'
 							? 'border-red-500'
 							: ''}"
 						type="email"
@@ -48,13 +51,13 @@
 					<p class="text-md w-fit">Password</p>
 					<input
 						name="password"
-						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorText
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField==='password'
 							? 'border-red-500'
 							: ''}"
 						type="password"
 					/>
 				</div>
-				<div class="mt-4 flex h-5 w-full items-center justify-start">
+				<div class="mt-4 flex min-h-5 w-full items-center justify-start">
 					<p class="{errorText ? 'block' : 'hidden'} text-sm text-red-500">{errorText}</p>
 				</div>
 				<button

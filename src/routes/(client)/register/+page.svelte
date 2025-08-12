@@ -13,6 +13,7 @@
 	};
 
 	let errorText = $state('');
+	let errorField = $state('');
 
 	const handleEnhance: SubmitFunction = () => {
 		return async ({ result }) => {
@@ -25,7 +26,9 @@
 					result.type === 'error'
 						? result.error.message
 						: result.data?.message || 'Something went wrong';
+				const errorfield = result.type !== 'error' ? result.data?.errorfield || '' : '';
 				errorText = msg;
+				errorField = errorfield;
 				console.error(msg);
 			}
 		};
@@ -47,17 +50,28 @@
 			<div class="flex w-full flex-col items-center p-4">
 				<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
 					<p class="text-md w-fit">Name</p>
-					<input name="name" class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
+					<input
+						name="name"
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField === 'name'
+							? 'border-red-500'
+							: ''}"
+						type="text"
+					/>
 					<p class="text-md w-fit">Email</p>
 					<input
 						name="email"
-						class="h-8 w-full rounded-xs border-1 border-black p-2"
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField === 'email'
+							? 'border-red-500'
+							: ''}"
 						type="email"
 					/>
 					<p class="text-md w-fit">Department</p>
 					<select
 						name="department"
-						class="flex h-8 w-full items-center rounded-xs border-1 border-black"
+						class="flex h-8 w-full items-center rounded-xs border-1 border-black {errorField ===
+						'department'
+							? 'border-red-500'
+							: ''}"
 					>
 						{#each deptList as dept}
 							<option>{dept}</option>
@@ -66,14 +80,23 @@
 					<p class="text-md w-fit">Batch</p>
 					<select
 						name="batch"
-						class="flex h-8 w-full items-center rounded-xs border-1 border-black"
+						class="flex h-8 w-full items-center rounded-xs border-1 border-black {errorField ===
+						'batch'
+							? 'border-red-500'
+							: ''}"
 					>
 						{#each batches as batch}
 							<option>{batch}</option>
 						{/each}
 					</select>
 					<p class="text-md w-fit">Year</p>
-					<select name="year" class="flex h-8 w-full items-center rounded-xs border-1 border-black">
+					<select
+						name="year"
+						class="flex h-8 w-full items-center rounded-xs border-1 border-black {errorField ===
+						'year'
+							? 'border-red-500'
+							: ''}"
+					>
 						{#each Object.entries(years) as [year, yearText] (year)}
 							<option>{yearText}</option>
 						{/each}
@@ -81,23 +104,30 @@
 					<p class="text-md w-fit">Phone</p>
 					<input
 						name="phone_number"
-						class="h-8 w-full rounded-xs border-1 border-black p-2"
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField === 'phone_number'
+							? 'border-red-500'
+							: ''}"
 						type="tel"
 					/>
 					<p class="text-md w-fit">Password</p>
 					<input
 						name="password"
-						class="h-8 w-full rounded-xs border-1 border-black p-2"
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField === 'password'
+							? 'border-red-500'
+							: ''}"
 						type="password"
 					/>
 					<p class="text-md w-fit">Confirm Password</p>
 					<input
 						name="confirm_password"
-						class="h-8 w-full rounded-xs border-1 border-black p-2"
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField ===
+						'confirm_password'
+							? 'border-red-500'
+							: ''}"
 						type="password"
 					/>
 				</div>
-				<div class="mt-4 flex h-5 w-full items-center justify-start">
+				<div class="mt-4 flex min-h-5 w-full items-center justify-start">
 					<p class="{errorText ? 'block' : 'hidden'} text-sm text-red-500">{errorText}</p>
 				</div>
 				<button
