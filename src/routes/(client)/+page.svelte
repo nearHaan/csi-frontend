@@ -94,7 +94,7 @@
 					<div class="flex h-full w-full flex-col items-center justify-center min-xl:max-w-110">
 						<img src="/images/csi-home-illus.png" class="w-100" alt="" />
 					</div>
-					<div class="w-full p-8">
+					<div class="w-full p-8 max-md:pt-0">
 						<h1 class="block max-md:hidden text-4xl">WELCOME TO CSI</h1>
 						<p class="mt-4 text-sm">
 							The Computer Society of India (CSI) - TKMCE Chapter is a vibrant community of tech
