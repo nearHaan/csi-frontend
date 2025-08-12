@@ -90,11 +90,12 @@
 				<div
 					class="min-lg:rounded-6xl mx-4 mt-4 flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col"
 				>
+					<h1 class="hidden w-full text-center max-md:block mt-8 text-4xl max-sm:text-3xl">WELCOME TO CSI</h1>
 					<div class="flex h-full w-full flex-col items-center justify-center min-xl:max-w-110">
 						<img src="/images/csi-home-illus.png" class="w-100" alt="" />
 					</div>
 					<div class="w-full p-8">
-						<h1 class="text-4xl">WELCOME TO CSI</h1>
+						<h1 class="block max-md:hidden text-4xl">WELCOME TO CSI</h1>
 						<p class="mt-4 text-sm">
 							The Computer Society of India (CSI) - TKMCE Chapter is a vibrant community of tech
 							enthusiasts, developers, and innovators at TKM College of Engineering. As a proud
