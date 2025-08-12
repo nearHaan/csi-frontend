@@ -9,8 +9,8 @@ export async function registerUser(name: string, email: string, department: stri
 
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
-        const errorText = Object.values(error).join(' ');
-        throw new Error(errorText || 'Registration failed');
+        const errorText = String(Object.values(error).at(0) ?? 'Registration failed');
+        throw new Error(errorText);
     }
 
     return await res.json();
@@ -26,8 +26,8 @@ export async function loginUser(email: string, password: string) {
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
         console.log(error);
-        const errorText = Object.values(error).join(' ');
-        throw new Error(errorText || 'Login failed');
+        const errorText = String(Object.values(error).at(0) ?? 'Login failed');
+        throw new Error(errorText);
     }
 
     return await res.json();
