@@ -102,6 +102,7 @@
 				<p class="{errorText ? 'block' : 'hidden'} text-sm text-red-500">{errorText}</p>
 			</div>
 			<button
+				type="submit"
 				class="m-4 cursor-pointer border-1 border-black bg-[#D9D9D9] px-6 py-3 ease-in-out hover:bg-black hover:text-white"
 			>
 				Register
