@@ -9,11 +9,10 @@ export const actions = {
         const email = data.get('email');
         const department = data.get('department');
         const batch = data.get('batch');
-        const year = data.get('year');
+        const year = parseInt(data.get('year') as string);
         const phone_number = data.get('phone_number');
         const password = data.get('password');
         const confirm_password = data.get('confirm_password');
-        console.log('hi');
         const error = validateRegistration(name, email, department, batch, year, phone_number, password, confirm_password);    
         if(error){
             return fail(400, {message: error});
