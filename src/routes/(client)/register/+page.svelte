@@ -23,33 +23,33 @@
 		<div class="flex w-full flex-col items-center p-4">
 			<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
 				<p class="text-md w-fit">Name</p>
-				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
+				<input name="name" class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
 				<p class="text-md w-fit">Email</p>
-				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="email" />
+				<input name="email" class="h-8 w-full rounded-xs border-1 border-black p-2" type="email" />
 				<p class="text-md w-fit">Department</p>
-				<select class="flex h-8 w-full items-center rounded-xs border-1 border-black">
+				<select name="department" class="flex h-8 w-full items-center rounded-xs border-1 border-black">
 					{#each deptList as dept}
 						<option>{dept}</option>
 					{/each}
 				</select>
 				<p class="text-md w-fit">Batch</p>
-				<select class="flex h-8 w-full items-center rounded-xs border-1 border-black">
+				<select name="batch" class="flex h-8 w-full items-center rounded-xs border-1 border-black">
 					{#each batches as batch}
 						<option>{batch}</option>
 					{/each}
 				</select>
 				<p class="text-md w-fit">Year</p>
-				<select class="flex h-8 w-full items-center rounded-xs border-1 border-black">
+				<select name="year" class="flex h-8 w-full items-center rounded-xs border-1 border-black">
 					{#each Object.entries(years) as [year, yearText](year)}
 						<option>{yearText}</option>
 					{/each}
 				</select>
 				<p class="text-md w-fit">Phone</p>
-				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="number" />
+				<input name="phone_number" class="h-8 w-full rounded-xs border-1 border-black p-2" type="number" />
 				<p class="text-md w-fit">Password</p>
-				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="password" />
+				<input name="password" class="h-8 w-full rounded-xs border-1 border-black p-2" type="password" />
 				<p class="text-md w-fit">Confirm Password</p>
-				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="password" />
+				<input name="confirm_password" class="h-8 w-full rounded-xs border-1 border-black p-2" type="password" />
 			</div>
 			<button
 				class="m-4 cursor-pointer border-1 border-black bg-[#D9D9D9] px-6 py-3 ease-in-out hover:bg-black hover:text-white"
