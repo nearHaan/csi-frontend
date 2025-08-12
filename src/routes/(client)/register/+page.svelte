@@ -1,3 +1,14 @@
+<script lang="ts">
+	const deptList: string[] = ['Computer Science', 'Electronics and Communication'];
+	const batches: string[] = ['A', 'B', 'C'];
+	const years: Record<number, string> = {
+		1: '1st year',
+		2: '2nd year',
+		3: '3rd year',
+		4: '4th year'
+	};
+</script>
+
 <div class="flex min-h-screen w-full flex-col items-center bg-white p-10 text-black">
 	<h1 class="text-5xl text-[#222222]">WELCOME TO CSI</h1>
 	<div class="mt-10 min-w-sm border-1 border-black shadow-[4px_4px_0_0_black]">
@@ -16,11 +27,23 @@
 				<p class="text-md w-fit">Email</p>
 				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="email" />
 				<p class="text-md w-fit">Department</p>
-				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
+				<select class="flex h-8 w-full items-center rounded-xs border-1 border-black">
+					{#each deptList as dept}
+						<option>{dept}</option>
+					{/each}
+				</select>
 				<p class="text-md w-fit">Batch</p>
-				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="text" />
+				<select class="flex h-8 w-full items-center rounded-xs border-1 border-black">
+					{#each batches as batch}
+						<option>{batch}</option>
+					{/each}
+				</select>
 				<p class="text-md w-fit">Year</p>
-				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="number" />
+				<select class="flex h-8 w-full items-center rounded-xs border-1 border-black">
+					{#each Object.entries(years) as [year, yearText](year)}
+						<option>{yearText}</option>
+					{/each}
+				</select>
 				<p class="text-md w-fit">Phone</p>
 				<input class="h-8 w-full rounded-xs border-1 border-black p-2" type="number" />
 				<p class="text-md w-fit">Password</p>
