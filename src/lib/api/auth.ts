@@ -11,7 +11,7 @@ export async function registerUser(name: string, email: string, department: stri
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
         console.log(error);
-        const errorField = String(Object.entries(error).at(0) ?? '');
+        const errorField = String(Object.keys(error).at(0) ?? '');
         const errorText = String(Object.values(error).at(0) ?? 'Registration failed');
         throw new APIError(errorText, errorField);
     }
@@ -29,7 +29,7 @@ export async function loginUser(email: string, password: string) {
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
         console.log(error);
-        const errorField = String(Object.entries(error).at(0) ?? '');
+        const errorField = String(Object.keys(error).at(0) ?? '');
         const errorText = String(Object.values(error).at(0) ?? 'Login failed');
         throw new APIError(errorText, errorField);
     }

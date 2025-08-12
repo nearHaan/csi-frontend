@@ -29,7 +29,7 @@
 				const errorfield = result.type !== 'error' ? result.data?.errorfield || '' : '';
 				errorText = msg;
 				errorField = errorfield;
-				console.error(msg);
+				console.error(errorfield);
 			}
 		};
 	};
@@ -98,7 +98,7 @@
 							: ''}"
 					>
 						{#each Object.entries(years) as [year, yearText] (year)}
-							<option>{yearText}</option>
+							<option value={year}>{yearText}</option>
 						{/each}
 					</select>
 					<p class="text-md w-fit">Phone</p>
