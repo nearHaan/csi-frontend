@@ -18,7 +18,7 @@
 	<title>CSI TKMCE</title>
 </svelte:head>
 
-<div class="bg-[#222222] font-mono text-white">
+<div class="bg-[#222222] border-y-1 border-black font-mono text-white">
 	<header
 		class="sticky top-0 z-10 flex h-20 w-full justify-center border-b-1 border-black bg-transparent backdrop-blur-2xl duration-300 ease-in-out"
 	>
