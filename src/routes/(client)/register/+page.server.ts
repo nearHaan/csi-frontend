@@ -3,7 +3,7 @@ import { validateRegistration } from "$lib/utils/validation";
 import { fail, type Actions } from "@sveltejs/kit";
 
 export const actions = {
-    login: async ({ locals ,cookies, request }) => {
+    register: async ({ locals ,cookies, request }) => {
         const data = await request.formData();
         const name = data.get('name');
         const email = data.get('email');
