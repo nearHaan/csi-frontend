@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { enhance } from "$app/forms";
-	import { goto } from "$app/navigation";
-	import type { SubmitFunction } from "@sveltejs/kit";
+	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
+	import type { SubmitFunction } from '@sveltejs/kit';
 
 	const deptList: string[] = ['Computer Science', 'Electronics and Communication'];
 	const batches: string[] = ['A', 'B', 'C'];
@@ -98,6 +98,9 @@
 					/>
 				</div>
 			</form>
+			<div class="mt-4 flex h-5 w-full items-center justify-start">
+				<p class="{errorText ? 'block' : 'hidden'} text-sm text-red-500">{errorText}</p>
+			</div>
 			<button
 				class="m-4 cursor-pointer border-1 border-black bg-[#D9D9D9] px-6 py-3 ease-in-out hover:bg-black hover:text-white"
 			>
