@@ -5,6 +5,8 @@ export function validateRegistration(name: unknown, email: unknown, department: 
 	if (!name || !email || !department || !batch || !year || !phone_number || !password || !confirm_password) {
 		return 'All fields are required';
 	}
+
+	//check more conditions
 	return null;
 }
 
