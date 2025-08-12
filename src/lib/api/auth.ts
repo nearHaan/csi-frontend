@@ -4,13 +4,13 @@ export async function registerUser(name: string, email: string, department: stri
     const res = await fetch(`${API_BASE_URL}/api/auth/register/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name, email, department, batch, year, phone_number, password, confirm_password})
+        body: JSON.stringify({ name, email, department, batch, year, phone_number, password, confirm_password })
     });
 
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
-        console.log(error);
-        throw new Error(error.meesage || 'Registration failed');
+        const errorText = Object.values(error).join(' ');
+        throw new Error(errorText || 'Registration failed');
     }
 
     return await res.json();
@@ -26,7 +26,8 @@ export async function loginUser(email: string, password: string) {
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
         console.log(error);
-        throw new Error(error.meesage || 'Login failed');
+        const errorText = Object.values(error).join(' ');
+        throw new Error(errorText || 'Login failed');
     }
 
     return await res.json();
