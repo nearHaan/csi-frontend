@@ -3,10 +3,20 @@
 
 	const {
 		event,
-		isUpcoming = false
+		details = {
+			status: 'previous',
+			isRegistered: false,
+			ticketAvailable: false,
+			certificateAvailable: false,
+		}
 	}: {
 		event: Event;
-		isUpcoming?: boolean;
+		details?: {
+			status: 'upcoming' | 'previous' | 'myevent'; //values: upcoming, registered, myevent
+			isRegistered?: boolean;
+			ticketAvailable?: boolean;
+			certificateAvailable?: boolean;
+		};
 	} = $props();
 </script>
 
@@ -20,11 +30,22 @@
 			<p class="mb-2 text-sm text-gray-400">{event.subtitle}</p>
 			<p class="text-sm text-gray-600">{event.location}</p>
 		</div>
-		{#if isUpcoming}
+		{#if details?.status === 'upcoming'}
 			<button
 				class="mt-2 ml-2 cursor-pointer bg-[#BFBFBF] p-2 text-black hover:bg-black hover:text-white"
 				>Register</button
 			>
+		{:else if details?.status === 'myevent'}
+			<div class="flex w-full items-center">
+				<button
+					class="mt-2 ml-2 cursor-pointer bg-[#BFBFBF] p-2 text-black hover:bg-black hover:text-white"
+					>View Ticket</button
+				>
+				<button
+					class="mt-2 ml-2 cursor-pointer bg-[#BFBFBF] p-2 text-black hover:bg-black hover:text-white"
+					>View Certificate</button
+				>
+			</div>
 		{/if}
 	</div>
 	<div class="flex w-full items-center justify-between bg-[#BFBFBF] p-2 text-black">

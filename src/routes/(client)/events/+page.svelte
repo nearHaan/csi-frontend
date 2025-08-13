@@ -83,7 +83,7 @@
 		</div>
 		<div class="grid grid-cols-1 gap-8 px-6 py-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each upcomingEvents as event (event.id)}
-				<EventCard event = {event} isUpcoming = {true}/>
+				<EventCard {event} details = {{ status: 'upcoming'}}/>
 			{/each}
 		</div>
 	{/if}
@@ -98,7 +98,7 @@
 			</div>
 			<div class="grid grid-cols-1 gap-8 px-6 py-8 md:grid-cols-2 lg:grid-cols-3">
 				{#each pastEvents as event (event.id)}
-					<EventCard event = {event}/>
+					<EventCard {event}/>
 				{/each}
 			</div>
 		</div>
