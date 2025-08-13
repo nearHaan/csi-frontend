@@ -36,7 +36,7 @@
 				>Register</button
 			>
 		{:else if details?.status === 'myevent'}
-			<div class="flex gap-2 max-sm:flex-col w-full justify-center items-center">
+			<div class="flex min-sm:gap-2 max-sm:flex-col w-full justify-center items-center">
 				<button
 					class="mt-2 max-sm:w-full cursor-pointer {details.ticketAvailable ? 'bg-[#BFBFBF] text-black hover:bg-black hover:text-white':'bg-[#efefef] text-[#bfbfbf]'} p-2"
 					>Ticket</button
