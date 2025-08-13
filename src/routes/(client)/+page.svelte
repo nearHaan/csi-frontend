@@ -181,7 +181,7 @@
 				<h2 class="text-2xl">My Events</h2>
 				<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
 					{#each myEvents as event}
-						<EventCard {event} />
+						<EventCard {event} details = {{ status: 'myevent'}}/>
 					{/each}
 				</div>
 			</div>

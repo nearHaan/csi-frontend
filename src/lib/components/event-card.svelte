@@ -36,14 +36,14 @@
 				>Register</button
 			>
 		{:else if details?.status === 'myevent'}
-			<div class="flex w-full items-center">
+			<div class="flex max-sm:flex-col w-full justify-center items-center">
 				<button
-					class="mt-2 ml-2 cursor-pointer bg-[#BFBFBF] p-2 text-black hover:bg-black hover:text-white"
-					>View Ticket</button
+					class="mt-2 min-sm:ml-2 max-sm:w-full cursor-pointer {details.ticketAvailable ? 'bg-[#BFBFBF] text-black hover:bg-black hover:text-white':'bg-[#efefef] text-[#bfbfbf]'} p-2"
+					>Ticket</button
 				>
 				<button
-					class="mt-2 ml-2 cursor-pointer bg-[#BFBFBF] p-2 text-black hover:bg-black hover:text-white"
-					>View Certificate</button
+					class="mt-2 min-sm:ml-2 max-sm:w-full cursor-pointer {details.certificateAvailable ? 'bg-[#BFBFBF] text-black hover:bg-black hover:text-white':'bg-[#efefef] text-[#bfbfbf]'} p-2"
+					>Certificate</button
 				>
 			</div>
 		{/if}
