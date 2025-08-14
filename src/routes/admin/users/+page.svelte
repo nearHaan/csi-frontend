@@ -1,16 +1,83 @@
 <script lang="ts">
-	import { Search } from "@lucide/svelte";
+	import { Search } from '@lucide/svelte';
 
-    //
+	//
 </script>
 
-<div class="flex min-h-screen w-full max-w-6xl flex-col items-center bg-[#222222] border-x-1 border-black text-white p-4">
-    <!-- Search bar -->
-    <div class="flex items-center w-full min-h-10 gap-2">
-        <input placeholder="Search user" class="w-full h-full py-1 px-2 rounded bg-[#353535]"/>
-        <button class="h-full flex items-center gap-2 rounded bg-[#505050] px-2">
-            <p class="text-sm max-sm:hidden">Search</p>
-            <Search size=20/>
-        </button>
-    </div>
+<div
+	class="flex min-h-screen w-full max-w-6xl flex-col items-center border-x-1 border-black bg-[#222222] p-4 text-white"
+>
+	<!-- Search bar -->
+	<div class="flex min-h-10 w-full items-center gap-2">
+		<input placeholder="Search user" class="h-full w-full rounded bg-[#353535] px-2 py-1" />
+		<button class="flex h-full items-center gap-2 rounded bg-[#505050] px-2">
+			<p class="text-sm max-sm:hidden">Search</p>
+			<Search size="20" />
+		</button>
+	</div>
+
+	<!-- Main body -->
+	<div class="mt-4 w-full overflow-auto border-1 border-black">
+		<table class="table-fixed">
+			<thead class="bg-black">
+				<tr>
+					<th class="min-w-10 border"><input type="checkbox"/></th>
+					<th class="test-sm min-w-20 border p-2">UserID</th>
+					<th class="test-sm min-w-50 border p-2 text-left">Name</th>
+					<th class="test-sm min-w-80 border p-2 text-left">Email</th>
+					<th class="test-sm min-w-40 border p-2">Phone number</th>
+					<th class="test-sm min-w-50 border p-2">Deapartment</th>
+					<th class="test-sm min-w-30 border p-2">Batch</th>
+					<th class="test-sm min-w-30 border p-2">Year</th>
+					<th class="test-sm min-w-30 border p-2">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="odd:bg-[#353535]">
+					<th class="min-w-10 border"><input type="checkbox"/></th>
+					<th class="test-sm border p-2">UserID</th>
+					<th class="test-sm border p-2 text-left">Name</th>
+					<th class="test-sm border p-2 text-left">Email</th>
+					<th class="test-sm border p-2">Phone number</th>
+					<th class="test-sm border p-2">Deapartment</th>
+					<th class="test-sm border p-2">Batch</th>
+					<th class="test-sm border p-2">Year</th>
+					<th class="test-sm border p-2">Action</th>
+				</tr>
+                <tr class="odd:bg-[#353535]">
+					<th class="min-w-10 border"><input type="checkbox"/></th>
+					<th class="test-sm border p-2">UserID</th>
+					<th class="test-sm border p-2 text-left">Name</th>
+					<th class="test-sm border p-2 text-left">Email</th>
+					<th class="test-sm border p-2">Phone number</th>
+					<th class="test-sm border p-2">Deapartment</th>
+					<th class="test-sm border p-2">Batch</th>
+					<th class="test-sm border p-2">Year</th>
+					<th class="test-sm border p-2">Action</th>
+				</tr>
+                <tr class="odd:bg-[#353535]">
+					<th class="min-w-10 border"><input type="checkbox"/></th>
+					<th class="test-sm border p-2">UserID</th>
+					<th class="test-sm border p-2 text-left">Name</th>
+					<th class="test-sm border p-2 text-left">Email</th>
+					<th class="test-sm border p-2">Phone number</th>
+					<th class="test-sm border p-2">Deapartment</th>
+					<th class="test-sm border p-2">Batch</th>
+					<th class="test-sm border p-2">Year</th>
+					<th class="test-sm border p-2">Action</th>
+				</tr>
+                <tr class="odd:bg-[#353535]">
+					<th class="min-w-10 border"><input type="checkbox"/></th>
+					<th class="test-sm border p-2">UserID</th>
+					<th class="test-sm border p-2 text-left">Name</th>
+					<th class="test-sm border p-2 text-left">Email</th>
+					<th class="test-sm border p-2">Phone number</th>
+					<th class="test-sm border p-2">Deapartment</th>
+					<th class="test-sm border p-2">Batch</th>
+					<th class="test-sm border p-2">Year</th>
+					<th class="test-sm border p-2">Action</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
