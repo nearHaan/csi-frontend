@@ -14,6 +14,16 @@ export type Student = {
     year: number;
 };
 
+export type User = {
+    id: number;
+    name: string;
+    email: string;
+    phone_number: string;
+    department: string;
+    batch: string;
+    year: number;
+};
+
 export type Event = {
     id: number;
     title: string;
