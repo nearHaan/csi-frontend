@@ -43,7 +43,7 @@
 	<!-- Search bar -->
 	<div class="flex min-h-10 w-full items-center gap-2">
 		<input placeholder="Search user" class="h-full w-full rounded bg-[#353535] px-2 py-1" />
-		<button class="flex h-full items-center gap-2 rounded bg-[#505050] px-2">
+		<button class="flex h-full items-center gap-2 rounded bg-[#505050] px-2 cursor-pointer">
 			<p class="text-sm max-sm:hidden">Search</p>
 			<Search size="20" />
 		</button>
