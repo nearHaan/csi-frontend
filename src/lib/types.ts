@@ -14,7 +14,7 @@ export type Student = {
     year: number;
 };
 
-export type User = {
+export type UserDataRow = {
     id: number;
     name: string;
     email: string;
