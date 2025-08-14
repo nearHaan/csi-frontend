@@ -2,6 +2,7 @@
 	import type { UserDataRow } from '$lib/types';
 	import { Search } from '@lucide/svelte';
 
+    let dm_choices = ['Delete'];
 	let users: UserDataRow[] = [
 		{
 			status: false,
@@ -48,6 +49,17 @@
 			<Search size="20" />
 		</button>
 	</div>
+
+    <!-- Actions pane -->
+     <div class="mt-4 w-full h-8 flex items-center justify-start">
+        <p class="text-sm">Actions:</p>
+        <select class="ml-2 h-full bg-[#353535] rounded min-w-30">
+            {#each dm_choices as choice}
+                <option value={choice}>{choice}</option>
+            {/each}
+        </select>
+        <button class="ml-2 px-2 h-full rounded bg-[#505050]">Go</button>
+     </div>
 
 	<!-- Main body -->
 	<div class="mt-4 w-full overflow-auto border-1 border-black text-[#eeeeee]">
