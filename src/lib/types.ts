@@ -15,6 +15,7 @@ export type Student = {
 };
 
 export type UserDataRow = {
+    status: boolean;
     id: number;
     name: string;
     email: string;
