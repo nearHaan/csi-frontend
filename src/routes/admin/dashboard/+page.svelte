@@ -1,7 +1,7 @@
-<div class="min-h-screen flex flex-col items-center bg-[#222222] text-white">
-    <h1 class="my-10 font-mono text-4xl">Admin Dashboard</h1>
-	<div class="w-full max-w-4xl flex max-sm:flex-col p-2 gap-2">
-		<div class="min-sm:w-full my-2 flex flex-col border-1 border-black p-4">
+<div class="flex min-h-screen flex-col items-center bg-[#222222] text-white">
+	<h1 class="my-10 font-mono text-4xl">Admin Dashboard</h1>
+	<div class="flex w-full max-w-4xl gap-2 p-2 max-sm:flex-col">
+		<div class="my-2 flex flex-col border-1 border-black p-4 min-sm:w-full">
 			<h2>People</h2>
 			<div
 				class="mt-2 flex flex-col [&>*:nth-child(even)]:bg-[#767676] [&>*:nth-child(odd)]:bg-[#313131]"
@@ -17,7 +17,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="min-sm:w-full my-2 flex flex-col border-1 border-black p-4">
+		<div class="my-2 flex flex-col border-1 border-black p-4 min-sm:w-full">
 			<h2>Events</h2>
 			<div
 				class="mt-2 flex flex-col [&>*:nth-child(even)]:bg-[#767676] [&>*:nth-child(odd)]:bg-[#313131]"
@@ -26,10 +26,13 @@
 					<a href="/admin/dashboard">Add Event</a>
 				</div>
 				<div class="flex items-center p-2">
-					<a href="/admin/dashboard">Registrations</a>
+					<a href="/admin/dashboard">Manage Events</a>
 				</div>
 				<div class="flex items-center p-2">
-					<a href="/admin/dashboard">Add Event</a>
+					<a href="/admin/dashboard">Add Registration</a>
+				</div>
+				<div class="flex items-center p-2">
+					<a href="/admin/dashboard">Manage Registration</a>
 				</div>
 			</div>
 		</div>
