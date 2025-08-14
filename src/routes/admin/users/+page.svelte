@@ -1,14 +1,45 @@
 <script lang="ts">
+	import type { UserDataRow } from '$lib/types';
 	import { Search } from '@lucide/svelte';
 
-	//
+	let users: UserDataRow[] = [
+		{
+			status: false,
+			id: 123,
+			name: 'User1',
+			email: 'randomuser@example.com',
+			phone_number: '8080808080',
+			department: 'Computer Science',
+			batch: 'B',
+			year: 2025
+		},
+		{
+			status: false,
+			id: 124,
+			name: 'User2',
+			email: 'randomuser@example.com',
+			phone_number: '8080808080',
+			department: 'Computer Science',
+			batch: 'B',
+			year: 2025
+		},
+		{
+			status: false,
+			id: 125,
+			name: 'User3',
+			email: 'randomuser@example.com',
+			phone_number: '8080808080',
+			department: 'Computer Science',
+			batch: 'B',
+			year: 2025
+		}
+	];
 </script>
 
 <div
 	class="flex min-h-screen w-full max-w-6xl flex-col items-center border-x-1 border-black bg-[#222222] p-4 text-white"
 >
-
-    <h1 class="text-lg w-full text-left m-4">Manage Users</h1>
+	<h1 class="m-4 w-full text-left text-lg">Manage Users</h1>
 	<!-- Search bar -->
 	<div class="flex min-h-10 w-full items-center gap-2">
 		<input placeholder="Search user" class="h-full w-full rounded bg-[#353535] px-2 py-1" />
@@ -23,7 +54,7 @@
 		<table class="table-fixed">
 			<thead class="bg-black">
 				<tr>
-					<th class="min-w-10 border"><input type="checkbox"/></th>
+					<th class="min-w-10 border"><input type="checkbox" /></th>
 					<th class="test-sm min-w-20 border p-2">UserID</th>
 					<th class="test-sm min-w-50 border p-2 text-left">Name</th>
 					<th class="test-sm min-w-80 border p-2 text-left">Email</th>
@@ -34,46 +65,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="odd:bg-[#353535]">
-					<th class="min-w-10 border"><input type="checkbox"/></th>
-					<th class="test-sm border p-2">UserID</th>
-					<th class="test-sm border p-2 text-left">Name</th>
-					<th class="test-sm border p-2 text-left">Email</th>
-					<th class="test-sm border p-2">Phone number</th>
-					<th class="test-sm border p-2">Deapartment</th>
-					<th class="test-sm border p-2">Batch</th>
-					<th class="test-sm border p-2">Year</th>
-				</tr>
-                <tr class="odd:bg-[#353535]">
-					<th class="min-w-10 border"><input type="checkbox"/></th>
-					<th class="test-sm border p-2">UserID</th>
-					<th class="test-sm border p-2 text-left">Name</th>
-					<th class="test-sm border p-2 text-left">Email</th>
-					<th class="test-sm border p-2">Phone number</th>
-					<th class="test-sm border p-2">Deapartment</th>
-					<th class="test-sm border p-2">Batch</th>
-					<th class="test-sm border p-2">Year</th>
-				</tr>
-                <tr class="odd:bg-[#353535]">
-					<th class="min-w-10 border"><input type="checkbox"/></th>
-					<th class="test-sm border p-2">UserID</th>
-					<th class="test-sm border p-2 text-left">Name</th>
-					<th class="test-sm border p-2 text-left">Email</th>
-					<th class="test-sm border p-2">Phone number</th>
-					<th class="test-sm border p-2">Deapartment</th>
-					<th class="test-sm border p-2">Batch</th>
-					<th class="test-sm border p-2">Year</th>
-				</tr>
-                <tr class="odd:bg-[#353535]">
-					<th class="min-w-10 border"><input type="checkbox"/></th>
-					<th class="test-sm border p-2">UserID</th>
-					<th class="test-sm border p-2 text-left">Name</th>
-					<th class="test-sm border p-2 text-left">Email</th>
-					<th class="test-sm border p-2">Phone number</th>
-					<th class="test-sm border p-2">Deapartment</th>
-					<th class="test-sm border p-2">Batch</th>
-					<th class="test-sm border p-2">Year</th>
-				</tr>
+				{#each users as user (user.id)}
+					<tr class="odd:bg-[#353535]">
+						<th class="min-w-10 border"><input type="checkbox" checked={user.status}/></th>
+						<th class="test-sm border p-2">{user.id}</th>
+						<th class="test-sm border p-2 text-left">{user.name}</th>
+						<th class="test-sm border p-2 text-left">{user.email}</th>
+						<th class="test-sm border p-2">{user.phone_number}</th>
+						<th class="test-sm border p-2">{user.department}</th>
+						<th class="test-sm border p-2">{user.batch}</th>
+						<th class="test-sm border p-2">{user.year}</th>
+					</tr>
+				{/each}
 			</tbody>
 		</table>
 	</div>
