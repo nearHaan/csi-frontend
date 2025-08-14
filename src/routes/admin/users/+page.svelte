@@ -58,8 +58,8 @@
 					<th class="test-sm min-w-20 border p-2">UserID</th>
 					<th class="test-sm min-w-50 border p-2 text-left">Name</th>
 					<th class="test-sm min-w-80 border p-2 text-left">Email</th>
-					<th class="test-sm min-w-40 border p-2">Phone number</th>
-					<th class="test-sm min-w-50 border p-2">Deapartment</th>
+					<th class="test-sm min-w-40 border p-2 text-left">Phone number</th>
+					<th class="test-sm min-w-50 border p-2 text-left">Deapartment</th>
 					<th class="test-sm min-w-30 border p-2">Batch</th>
 					<th class="test-sm min-w-30 border p-2">Year</th>
 				</tr>
@@ -71,8 +71,8 @@
 						<th class="test-sm border p-2">{user.id}</th>
 						<th class="test-sm border p-2 text-left">{user.name}</th>
 						<th class="test-sm border p-2 text-left">{user.email}</th>
-						<th class="test-sm border p-2">{user.phone_number}</th>
-						<th class="test-sm border p-2">{user.department}</th>
+						<th class="test-sm border p-2 text-left">{user.phone_number}</th>
+						<th class="test-sm border p-2 text-left">{user.department}</th>
 						<th class="test-sm border p-2">{user.batch}</th>
 						<th class="test-sm border p-2">{user.year}</th>
 					</tr>
