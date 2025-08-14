@@ -7,10 +7,10 @@
 				class="mt-2 flex flex-col [&>*:nth-child(even)]:bg-[#767676] [&>*:nth-child(odd)]:bg-[#313131]"
 			>
 				<div class="flex items-center p-2">
-					<a href="/admin/dashboard">Registered Users</a>
+					<a href="/admin/dashboard">Manage Users</a>
 				</div>
 				<div class="flex items-center p-2">
-					<a href="/admin/dashboard">Execom Members</a>
+					<a href="/admin/dashboard">Manage Execom Members</a>
 				</div>
 				<div class="flex items-center p-2">
 					<a href="/admin/dashboard">Call For Execom</a>
