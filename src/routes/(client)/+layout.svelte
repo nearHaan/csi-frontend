@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../../app.css';
-	import { Menu } from '@lucide/svelte';
+	import { InstagramIcon, Linkedin, LinkedinIcon, MailIcon, Menu } from '@lucide/svelte';
 	let { children, data } = $props();
 
 	let isMenuOpen: boolean = $state(false);
@@ -18,7 +18,7 @@
 	<title>CSI TKMCE</title>
 </svelte:head>
 
-<div class="bg-[#222222] border-y-1 min-6xl:border-1 border-black font-mono text-white">
+<div class="border-y-1 border-black bg-[#222222] font-mono text-white min-6xl:border-1">
 	<header
 		class="sticky top-0 z-10 flex h-20 w-full justify-center border-b-1 border-black bg-transparent backdrop-blur-2xl duration-300 ease-in-out"
 	>
@@ -122,10 +122,15 @@
 					<img class="h-20 w-30 text-white" src="./images/csi_logo.png" alt="organisation" />
 				</div>
 				<div class="flex w-full items-end justify-end gap-4 p-5 max-sm:justify-start">
-					<div class="h-6 w-6 rounded bg-[#444444]"></div>
-					<div class="h-6 w-6 rounded bg-[#444444]"></div>
-					<div class="h-6 w-6 rounded bg-[#444444]"></div>
-					<div class="h-6 w-6 rounded bg-[#444444]"></div>
+					<div class="rounded bg-[#444444] p-1">
+						<LinkedinIcon/>
+					</div>
+					<div class="rounded bg-[#444444] p-1">
+						<InstagramIcon />
+					</div>
+					<div class="rounded bg-[#444444] p-1">
+						<MailIcon />
+					</div>
 				</div>
 			</div>
 			<div class="left-20 bg-[#222222] p-2 text-xs text-[#818181]">
