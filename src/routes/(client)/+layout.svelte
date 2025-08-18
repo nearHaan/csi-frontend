@@ -112,7 +112,7 @@
 			</nav>
 		</div>
 	{/if}
-	<main class="flex min-h-screen justify-center">
+	<main class="flex justify-center">
 		{@render children?.()}
 	</main>
 	<footer class="flex justify-center border-t-1 border-black bg-[#222222] text-white">

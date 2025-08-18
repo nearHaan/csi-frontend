@@ -58,9 +58,7 @@
 	<!-- First Section -->
 	<section
 		id="hero"
-		class="relative flex {isLoggedin
-			? ''
-			: 'min-h-screen'} flex-col items-center justify-start border-x-1 border-black"
+		class="relative flex min-h-180 flex-col items-center justify-start border-x-1 border-black"
 	>
 		<div class="flex w-full items-center justify-between border-b-1 border-black">
 			<div class={isLightOn ? 'animate-pulse' : ''}>
@@ -86,9 +84,9 @@
 			</button>
 		</div>
 		{#if !isLoggedin}
-			<div class="h-full w-full">
+			<div class="min-md:px-10 h-full flex items-center w-full">
 				<div
-					class="min-lg:rounded-6xl mx-4 mt-4 flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col"
+					class="min-lg:rounded-6xl flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col"
 				>
 					<h1 class="mt-8 hidden w-full text-center text-4xl max-md:block max-sm:text-3xl">
 						WELCOME TO CSI
@@ -116,7 +114,7 @@
 	{#if !isLoggedin}
 		<section
 			id="about"
-			class="relative flex min-h-screen flex-col items-center border-1 border-black bg-[#222222]"
+			class="relative flex min-h-180 flex-col items-center border-1 border-black bg-[#222222]"
 		>
 			<div class="grid w-full grid-cols-3 border-y-1 border-black bg-[#1B1B1B]">
 				<div class="col-span-1 w-full bg-[#2D2D2D] px-10 py-4 text-4xl">WHO ARE WE?</div>

@@ -6,6 +6,7 @@
 @theme {
     --font-mono: "Space Mono", monospace;
     --breakpoint-6xl: 72rem;
+    --breakpoint-7xl: 102rem;
 }
 
 .marquee-container {
