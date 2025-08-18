@@ -58,7 +58,7 @@
 	<!-- First Section -->
 	<section
 		id="hero"
-		class="relative flex min-h-180 flex-col items-center justify-start border-x-1 border-black"
+		class="relative flex {isLoggedin ? '' : 'min-h-180'} flex-col items-center justify-start border-x-1 border-black"
 	>
 		<div class="flex w-full items-center justify-between border-b-1 border-black">
 			<div class={isLightOn ? 'animate-pulse' : ''}>
