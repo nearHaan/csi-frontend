@@ -23,6 +23,9 @@
 		<h3 class="max-sm:text-md text-[#757575] min-sm:text-lg">Graduation Year:</h3>
 		<p class="text-lg">2027</p>
 	</div>
+    <div class="w-full border-black border-1">
+        //
+    </div>
 	<div class="flex w-full items-center justify-center">
 		<button
 			class="m-4 cursor-pointer border-1 border-black bg-[#ffffff] px-6 py-3 text-black ease-in-out hover:bg-black hover:text-white"
