@@ -18,11 +18,11 @@
 	<title>CSI TKMCE</title>
 </svelte:head>
 
-<div class="border-y-1 border-black bg-[#222222] font-mono text-white min-6xl:border-1">
+<div class="border-y-1 border-[#181818] bg-[#222222] font-mono text-white min-6xl:border-1">
 	<header
-		class="sticky top-0 z-10 flex h-20 w-full justify-center border-b-1 border-black bg-transparent backdrop-blur-2xl duration-300 ease-in-out"
+		class="sticky top-0 z-10 flex h-20 w-full justify-center border-b-1 border-[#181818] bg-transparent backdrop-blur-2xl duration-300 ease-in-out"
 	>
-		<nav class="flex w-full max-w-6xl justify-between border-x-1 border-black p-5">
+		<nav class="flex w-full max-w-6xl justify-between border-x-1 border-[#181818] p-5">
 			<div class="flex items-center gap-2">
 				<img class="h-10 text-white" src="/images/csi_logo.png" alt="organisation" />
 			</div>
@@ -64,7 +64,7 @@
 		<div
 			class="fixed top-0 right-0 z-30 h-screen w-64 transform bg-[#222222] shadow-lg transition-transform duration-300 ease-in-out min-sm:hidden"
 		>
-			<div class="flex h-20 items-center justify-end border-b-1 border-black p-5">
+			<div class="flex h-20 items-center justify-end border-b-1 border-[#181818] p-5">
 				<button onclick={closeMenu} aria-label="Toggle menu">
 					<Menu />
 				</button>
@@ -115,8 +115,8 @@
 	<main class="flex justify-center">
 		{@render children?.()}
 	</main>
-	<footer class="flex justify-center border-t-1 border-black bg-[#222222] text-white">
-		<div class="flex w-full max-w-6xl flex-col justify-center border-x-1 border-black p-4">
+	<footer class="flex justify-center border-t-1 border-[#181818] bg-[#222222] text-white">
+		<div class="flex w-full max-w-6xl flex-col justify-center border-x-1 border-[#181818] p-4">
 			<div class="min-sm:flex">
 				<div class="flex flex-col justify-center">
 					<img class="h-20 w-30 text-white" src="/images/csi_logo.png" alt="organisation" />

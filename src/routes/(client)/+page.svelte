@@ -58,9 +58,9 @@
 	<!-- First Section -->
 	<section
 		id="hero"
-		class="relative flex {isLoggedin ? '' : 'min-h-180'} flex-col items-center justify-start border-x-1 border-black"
+		class="relative flex {isLoggedin ? '' : 'min-h-180'} flex-col items-center justify-start border-x-1 border-[#181818]"
 	>
-		<div class="flex w-full items-center justify-between border-b-1 border-black">
+		<div class="flex w-full items-center justify-between border-b-1 border-[#181818]">
 			<div class={isLightOn ? 'animate-pulse' : ''}>
 				<svg
 					width="111"
@@ -72,12 +72,12 @@
 					<path
 						d="M0.5 128.221L0.5 1.7793L110.001 65L0.5 128.221Z"
 						fill={isLightOn ? '#bfbfbf' : '#313131'}
-						stroke="black"
+						stroke="[#181818]"
 					/>
 				</svg>
 			</div>
 			<button
-				class="flex h-[130px] w-[130px] items-center justify-center rounded-full border-1 border-black bg-[#1B1B1B]"
+				class="flex h-[130px] w-[130px] items-center justify-center rounded-full border-1 border-[#181818] bg-[#1B1B1B]"
 				onclick={toggleLight}
 			>
 				<Power color={isLightOn ? '#008CFF' : '#ffffff'} />
@@ -114,9 +114,9 @@
 	{#if !isLoggedin}
 		<section
 			id="about"
-			class="relative flex min-h-180 flex-col items-center border-1 border-black bg-[#222222]"
+			class="relative flex min-h-180 flex-col items-center border-1 border-[#181818] bg-[#222222]"
 		>
-			<div class="grid w-full grid-cols-3 border-y-1 border-black bg-[#1B1B1B]">
+			<div class="grid w-full grid-cols-3 border-y-1 border-[#181818] bg-[#1B1B1B]">
 				<div class="col-span-1 w-full bg-[#2D2D2D] px-10 py-4 text-4xl">WHO ARE WE?</div>
 				<div class="col-span-2 w-full"></div>
 				<div class="col-span-1 w-full"></div>
@@ -129,7 +129,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="marquee-container my-4 flex items-center border-y-1 border-black p-5">
+			<div class="marquee-container my-4 flex items-center border-y-1 border-[#181818] p-5">
 				<div class="{isLightOn ? 'marquee-track' : ''} text-5xl font-bold text-[#2D2D2D]">
 					<span>WHAT DO WE DO?</span>
 					<span>WHAT DO WE DO?</span>
@@ -165,7 +165,7 @@
 		<!-- Join Section -->
 		<section
 			id="join"
-			class="relative flex items-center justify-center border-x-1 border-black bg-[#22222] py-20"
+			class="relative flex items-center justify-center border-x-1 border-[#181818] bg-[#22222] py-20"
 		>
 			<div class="relative z-10 text-center">
 				<h2 class="mb-12 text-2xl font-light tracking-wider max-md:w-80 md:text-3xl">
@@ -176,8 +176,8 @@
 		</section>
 	{/if}
 	{#if isLoggedin}
-		<section id="leaderboard" class="border-x-1 border-black p-4">
-			<div class="m-4 border-1 border-black p-4 shadow-[4px_4px_0_0_black]">
+		<section id="leaderboard" class="border-x-1 border-[#181818] p-4">
+			<div class="m-4 border-1 border-[#181818] p-4 shadow-[4px_4px_0_0_[#181818]]">
 				<h2 class="text-2xl">My Events</h2>
 				<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
 					{#each myEvents as event}
@@ -185,9 +185,9 @@
 					{/each}
 				</div>
 			</div>
-			<div class="m-4 flex flex-col border-1 border-black shadow-[4px_4px_0_0_black]">
+			<div class="m-4 flex flex-col border-1 border-[#181818] shadow-[4px_4px_0_0_[#181818]]">
 				<h2 class="p-4 text-2xl">LeaderBoard</h2>
-				<div class="overflow-auto border-t-1 border-black">
+				<div class="overflow-auto border-t-1 border-[#181818]">
 					<table>
 						<thead>
 							<tr>
