@@ -33,7 +33,7 @@
 		{#if details?.status === 'upcoming'}
 			<button
 				class="mt-2 max-sm:ml-2 "
-				><a href={`/events/register?id=${event.id}`} class="cursor-pointer bg-[#BFBFBF] p-2 text-black hover:bg-black hover:text-white">Register</a></button
+				><a href={`/events/register/event?id=${event.id}`} class="cursor-pointer bg-[#BFBFBF] p-2 text-black hover:bg-black hover:text-white">Register</a></button
 			>
 		{:else if details?.status === 'myevent'}
 			<div class="flex min-sm:gap-2 max-sm:flex-col w-full justify-center items-center">
