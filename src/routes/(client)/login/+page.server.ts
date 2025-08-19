@@ -1,5 +1,4 @@
 import { loginUser } from "$lib/api/auth";
-import { APIError } from "$lib/errors.ts/APIError";
 import { validateLogin } from "$lib/utils/validation";
 import { fail, type Actions } from "@sveltejs/kit";
 
@@ -34,11 +33,7 @@ export const actions = {
 
             return { success: true, student};
         } catch (err) {
-            if(err instanceof APIError) {
-                return fail(401, { message: (err as APIError).message, errorfield: (err as APIError).errorfield});
-            } else {
-                return fail(401, { message: (err as APIError).message});
-            }
+            return fail(401, { message: (err as Error).message});
         }
     }
 } satisfies Actions;
