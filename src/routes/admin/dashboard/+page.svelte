@@ -1,4 +1,4 @@
-<div class="flex min-h-screen w-full max-w-6xl flex-col items-center bg-[#222222] border-x-1 border-black text-white">
+<div class="flex min-h-screen w-full max-w-7xl flex-col items-center bg-[#222222] border-x-1 border-black text-white">
 	<h1 class="my-10 font-mono transition-transform max-sm:text-3xl text-4xl">Admin Dashboard</h1>
 	<div class="w-full max-w-4xl gap-2 p-2 min-sm:grid grid-cols-2 max-sm:flex flex-col">
 		<div class="my-2 flex flex-col border-1 border-black p-4 min-sm:w-full">

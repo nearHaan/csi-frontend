@@ -54,7 +54,7 @@
 	<title>CSI - Computer Society of India</title>
 </svelte:head>
 
-<div class="flex w-full max-w-6xl flex-col justify-center overflow-hidden bg-[#222222] text-white">
+<div class="flex w-full max-w-7xl flex-col justify-center overflow-hidden bg-[#222222] text-white">
 	<!-- First Section -->
 	<section
 		id="hero"

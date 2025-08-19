@@ -17,11 +17,11 @@
 <svelte:head>
 	<title>CSI TKMCE</title>
 </svelte:head>
-<div class="bg-[#222222] border-y-1 min-6xl:border-1 border-black font-mono text-white">
+<div class="bg-[#222222] border-y-1 min-7xl:border-1 border-black font-mono text-white">
 	<header
 		class="sticky top-0 z-10 flex h-20 w-full justify-center border-b-1 border-black bg-transparent backdrop-blur-2xl duration-300 ease-in-out"
 	>
-		<nav class="flex w-full max-w-6xl justify-between border-x-1 border-black p-5">
+		<nav class="flex w-full max-w-7xl justify-between border-x-1 border-black p-5">
 			<div class="flex items-center gap-2">
 				<img class="h-10 text-white" src="/images/csi_logo.png" alt="organisation" />
 			</div>

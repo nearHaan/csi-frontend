@@ -2,7 +2,7 @@
 	<title>CSI - Admin side</title>
 </svelte:head>
 
-<div class="flex min-h-screen w-full max-w-6xl flex-col items-center bg-[#222222] border-x-1 border-black text-white">
+<div class="flex min-h-screen w-full max-w-7xl flex-col items-center bg-[#222222] border-x-1 border-black text-white">
 	<h1 class="mt-10 font-mono text-2xl">CSI Admin Login</h1>
 	<div class="mt-10 min-w-sm border-1 border-black shadow-[4px_4px_0_0_black]">
 		<div class="flex w-full justify-between border-b-1 border-black">

@@ -38,7 +38,7 @@
 </script>
 
 <div
-	class="flex min-h-screen w-full max-w-6xl flex-col items-center border-x-1 border-black bg-[#222222] p-4 text-white"
+	class="flex min-h-screen w-full max-w-7xl flex-col items-center border-x-1 border-black bg-[#222222] p-4 text-white"
 >
 	<h1 class="m-4 w-full text-left text-lg">Manage Users</h1>
 	<!-- Search bar -->
