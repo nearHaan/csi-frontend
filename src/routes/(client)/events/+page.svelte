@@ -72,7 +72,7 @@
 	<title>Events - CSI TKMCE</title>
 </svelte:head>
 
-<div class="min-h-screen max-w-7xl border-x-1 border-[#181818] bg-[#222222]">
+<div class="min-h-screen max-w-7xl w-full border-x-1 border-[#181818] bg-[#222222]">
 	{#if upcomingEvents.length > 0}
 		<div class="flex w-full justify-center border-b-1 border-[#181818]">
 			<div class="flex h-20 w-full max-w-7xl items-center justify-start">

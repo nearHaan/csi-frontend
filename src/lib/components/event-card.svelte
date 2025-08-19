@@ -21,7 +21,7 @@
 </script>
 
 <div class="z-0 m-2 overflow-hidden bg-white shadow-[4px_4px_0_0_black]">
-	<div class="h-48 overflow-hidden bg-black">
+	<div class="w-full aspect-3/2 overflow-hidden bg-black">
 		<img alt="event-poster" src={event.image} />
 	</div>
 	<div class="flex flex-col items-center p-4">

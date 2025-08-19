@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="flex w-full max-w-7xl border-x-1 border-black bg-[#222222] max-md:flex-col"
+	class="flex w-full min-h-screen items-center max-w-7xl border-x-1 border-black bg-[#222222] max-md:flex-col"
 >
 	<div class="flex w-full flex-col items-center p-4">
 		<img
