@@ -1,7 +1,7 @@
 <script lang="ts">
 	let isCreate = $state(true);
 
-	function toggleMode(title: string){
+	function toggleMode(title: string) {
 		isCreate = title === 'create';
 	}
 </script>
@@ -31,14 +31,37 @@
 		<h3 class="max-sm:text-md text-[#757575] min-sm:text-lg">Graduation Year:</h3>
 		<p class="text-lg">2027</p>
 	</div>
-    <div class="mt-2 w-full flex items-center gap-1 rounded-md bg-[#404040] p-1">
-        <button onclick={() => {toggleMode('create')}} class="w-full rounded {isCreate?'bg-[#222222]':''} p-1">
+	<div class="mt-2 flex w-full items-center gap-1 rounded-md bg-[#404040] p-1">
+		<button
+			onclick={() => {
+				toggleMode('create');
+			}}
+			class="w-full rounded {isCreate ? 'bg-[#222222]' : ''} p-1"
+		>
 			Create Team
 		</button>
-		<button onclick={() => {toggleMode('join')}} class="w-full rounded {!isCreate?'bg-[#222222]':''} p-1">
+		<button
+			onclick={() => {
+				toggleMode('join');
+			}}
+			class="w-full rounded {!isCreate ? 'bg-[#222222]' : ''} p-1"
+		>
 			Join Team
 		</button>
-    </div>
+	</div>
+	<div class="p-1 w-full flex flex-col items-center bg-[#404040] rounded-lg">
+		{#if isCreate}
+			<div class="flex items-center w-full max-w-100 gap-x-2">
+				<p class="text-md w-max">Team Name</p>
+				<input
+					name="email"
+					class="h-8 w-full rounded-xs border-1 border-black p-2 "
+					type="email"
+				/>
+			</div>
+		{/if}
+	</div>
+
 	<div class="flex w-full items-center justify-center">
 		<button
 			class="m-4 cursor-pointer border-1 border-black bg-[#ffffff] px-6 py-3 text-black ease-in-out hover:bg-black hover:text-white"
