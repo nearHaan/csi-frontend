@@ -2,7 +2,7 @@
 	import type { UserDataRow } from '$lib/types';
 	import { Search } from '@lucide/svelte';
 
-    let dm_choices = ['Delete'];
+	let dm_choices = ['Delete'];
 	let users: UserDataRow[] = [
 		{
 			status: false,
@@ -12,7 +12,8 @@
 			phone_number: '8080808080',
 			department: 'Computer Science',
 			batch: 'B',
-			year: 2025
+			year: 2025,
+			role: 'student'
 		},
 		{
 			status: false,
@@ -22,7 +23,8 @@
 			phone_number: '8080808080',
 			department: 'Computer Science',
 			batch: 'B',
-			year: 2025
+			year: 2025,
+			role: 'student'
 		},
 		{
 			status: false,
@@ -32,7 +34,8 @@
 			phone_number: '8080808080',
 			department: 'Computer Science',
 			batch: 'B',
-			year: 2025
+			year: 2025,
+			role: 'student'
 		}
 	];
 </script>
@@ -40,26 +43,29 @@
 <div
 	class="flex min-h-screen w-full max-w-7xl flex-col items-center border-x-1 border-black bg-[#222222] p-4 text-white"
 >
-	<h1 class="m-4 w-full text-left text-lg">Manage Users</h1>
+	<div class="flex min-h-10 w-full items-center justify-between">
+		<h1 class="w-full text-left text-lg">Manage Users</h1>
+		<button class="h-full min-w-40 cursor-pointer rounded bg-white px-2 text-[#505050]">Add Student</button>
+	</div>
 	<!-- Search bar -->
-	<div class="flex min-h-10 w-full items-center gap-2">
+	<div class="mt-4 flex min-h-10 w-full items-center gap-2">
 		<input placeholder="Search user" class="h-full w-full rounded bg-[#353535] px-2 py-1" />
-		<button class="flex h-full items-center gap-2 rounded bg-[#505050] px-2 cursor-pointer">
+		<button class="flex h-full cursor-pointer items-center gap-2 rounded bg-[#505050] px-2">
 			<p class="text-sm max-sm:hidden">Search</p>
 			<Search size="20" />
 		</button>
 	</div>
 
-    <!-- Actions pane -->
-     <div class="mt-4 w-full h-8 flex items-center justify-start">
-        <p class="text-sm">Actions:</p>
-        <select class="ml-2 h-full bg-[#353535] rounded min-w-30">
-            {#each dm_choices as choice}
-                <option value={choice}>{choice}</option>
-            {/each}
-        </select>
-        <button class="ml-2 px-2 h-full rounded bg-[#505050]">Go</button>
-     </div>
+	<!-- Actions pane -->
+	<div class="mt-4 flex h-8 w-full items-center justify-start">
+		<p class="text-sm">Actions:</p>
+		<select class="ml-2 h-full min-w-30 rounded bg-[#353535]">
+			{#each dm_choices as choice}
+				<option value={choice}>{choice}</option>
+			{/each}
+		</select>
+		<button class="ml-2 h-full rounded bg-[#505050] px-2">Go</button>
+	</div>
 
 	<!-- Main body -->
 	<div class="mt-4 w-full overflow-auto border-1 border-black text-[#eeeeee]">
@@ -74,12 +80,13 @@
 					<th class="test-sm min-w-50 border p-2 text-left">Deapartment</th>
 					<th class="test-sm min-w-30 border p-2">Batch</th>
 					<th class="test-sm min-w-30 border p-2">Year</th>
+					<th class="test-sm min-w-30 border p-2">Role</th>
 				</tr>
 			</thead>
 			<tbody>
 				{#each users as user (user.id)}
 					<tr class="odd:bg-[#353535]">
-						<th class="min-w-10 border"><input type="checkbox" checked={user.status}/></th>
+						<th class="min-w-10 border"><input type="checkbox" checked={user.status} /></th>
 						<th class="test-sm border p-2">{user.id}</th>
 						<th class="test-sm border p-2 text-left">{user.name}</th>
 						<th class="test-sm border p-2 text-left">{user.email}</th>
@@ -87,6 +94,7 @@
 						<th class="test-sm border p-2 text-left">{user.department}</th>
 						<th class="test-sm border p-2">{user.batch}</th>
 						<th class="test-sm border p-2">{user.year}</th>
+						<th class="test-sm border p-2">{user.role}</th>
 					</tr>
 				{/each}
 			</tbody>
