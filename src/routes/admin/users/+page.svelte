@@ -1,8 +1,12 @@
 <script lang="ts">
 	import type { UserDataRow } from '$lib/types';
-	import { Search } from '@lucide/svelte';
+	import { Search, Plus } from '@lucide/svelte';
+	import AdminSearch from '$lib/components/admin-search.svelte';
+	import ActionsPane from '$lib/components/admin-actions.svelte'
 
 	let dm_choices = ['Delete'];
+	let searchText: string = $state('');
+    let selected : string = dm_choices[0];
 	let users: UserDataRow[] = [
 		{
 			status: false,
@@ -38,6 +42,14 @@
 			role: 'student'
 		}
 	];
+
+	function onSearch(){
+		//
+	}
+
+	function onActionGo(){
+		//
+	}
 </script>
 
 <div
@@ -45,27 +57,14 @@
 >
 	<div class="flex min-h-10 w-full items-center justify-between">
 		<h1 class="w-full text-left text-lg">Manage Users</h1>
-		<button class="h-full min-w-40 cursor-pointer rounded bg-white px-2 text-[#505050]">Add Student</button>
+		<button class="h-full max-sm:hidden min-w-40 cursor-pointer rounded bg-white px-2 text-[#505050]">Add Student</button>
+		<button class="flex justify-center items-center rounded min-sm:hidden w-10 h-10 aspect-1 bg-white"><Plus color="black"/></button>
 	</div>
 	<!-- Search bar -->
-	<div class="mt-4 flex min-h-10 w-full items-center gap-2">
-		<input placeholder="Search user" class="h-full w-full rounded bg-[#353535] px-2 py-1" />
-		<button class="flex h-full cursor-pointer items-center gap-2 rounded bg-[#505050] px-2">
-			<p class="text-sm max-sm:hidden">Search</p>
-			<Search size="20" />
-		</button>
-	</div>
+	<AdminSearch searchText={searchText} onSearch={onSearch}/>
 
 	<!-- Actions pane -->
-	<div class="mt-4 flex h-8 w-full items-center justify-start">
-		<p class="text-sm">Actions:</p>
-		<select class="ml-2 h-full min-w-30 rounded bg-[#353535]">
-			{#each dm_choices as choice}
-				<option value={choice}>{choice}</option>
-			{/each}
-		</select>
-		<button class="ml-2 h-full rounded bg-[#505050] px-2">Go</button>
-	</div>
+	<ActionsPane dm_choices={dm_choices} selected={selected} onGo={onActionGo}/>
 
 	<!-- Main body -->
 	<div class="mt-4 w-full overflow-auto border-1 border-black text-[#eeeeee]">
