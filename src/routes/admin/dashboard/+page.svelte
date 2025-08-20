@@ -23,16 +23,23 @@
 				class="mt-2 flex flex-col [&>*:nth-child(even)]:bg-[#767676] [&>*:nth-child(odd)]:bg-[#313131]"
 			>
 				<div class="flex items-center p-2">
-					<a href="/admin/dashboard">Add Event</a>
-				</div>
-				<div class="flex items-center p-2">
 					<a href="/admin/dashboard">Manage Events</a>
 				</div>
 				<div class="flex items-center p-2">
-					<a href="/admin/dashboard">Add Registration</a>
+					<a href="/admin/dashboard">Manage Registration</a>
+				</div>
+			</div>
+		</div>
+		<div class="my-2 flex flex-col border-1 border-black p-4 min-sm:w-full">
+			<h2>Others</h2>
+			<div
+				class="mt-2 flex flex-col [&>*:nth-child(even)]:bg-[#767676] [&>*:nth-child(odd)]:bg-[#313131]"
+			>
+				<div class="flex items-center p-2">
+					<a href="/admin/dashboard">Manage Departments</a>
 				</div>
 				<div class="flex items-center p-2">
-					<a href="/admin/dashboard">Manage Registration</a>
+					<a href="/admin/dashboard">Manage Execom Positions</a>
 				</div>
 			</div>
 		</div>
