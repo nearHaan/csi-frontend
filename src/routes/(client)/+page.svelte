@@ -2,10 +2,9 @@
 	import EventCard from '$lib/components/event-card.svelte';
 	import type { Event } from '$lib/types';
 	import { Power } from '@lucide/svelte';
-	import { onMount } from 'svelte';
 
 	let { data } = $props();
-	let isLoggedin: boolean = $derived(!!data.student);
+	let isLoggedin: boolean = $derived(!!data.user);
 	let isLightOn: boolean = $state(false);
 
 	function toggleLight(): void {
@@ -13,7 +12,7 @@
 	}
 
 	$effect(() => {
-		isLoggedin = !!data.student;
+		isLoggedin = !!data.user;
 	});
 
 	const myEvents: Event[] = [

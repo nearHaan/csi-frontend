@@ -43,8 +43,8 @@
 						<a href="/events">Events</a>
 					</li>
 					<li>
-						<a class="text-[#008CFF]" href={!data.student?.name ? '/login' : '/logout'}
-							>{!data.student?.name ? 'Login' : 'Logout'}</a
+						<a class="text-[#008CFF]" href={!data.user ? '/login' : '/logout'}
+							>{!data.user ? 'Login' : 'Logout'}</a
 						>
 					</li>
 				</ul>
@@ -101,11 +101,11 @@
 					</li>
 					<li>
 						<a
-							href={!data.student?.name ? '/login' : '/logout'}
+							href={!data.user ? '/login' : '/logout'}
 							class="block py-2 text-lg text-[#008CFF] transition-colors hover:text-gray-300"
 							onclick={closeMenu}
 						>
-							{!data.student?.name ? 'Login' : 'Logout'}
+							{!data.user ? 'Login' : 'Logout'}
 						</a>
 					</li>
 				</ul>

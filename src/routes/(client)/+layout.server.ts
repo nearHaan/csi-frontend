@@ -1,8 +1,8 @@
 import type { LayoutServerLoad } from "./$types"
 
 export const load: LayoutServerLoad = (event) => {
-    console.log("Loading",event.locals.student?.name);
+    console.log("Loading",event.locals.user?.user_id);
     return {
-        student: event.locals.student
+        user: event.locals.user
     }
 }

@@ -14,24 +14,24 @@ export const actions = {
         }
 
         try{
-            const { access_token, refresh_token, student } = await loginUser(email as string, password as string);
+            const { accessToken, refreshToken, user } = await loginUser(email as string, password as string);
 
-            cookies.set('access_token', access_token, {
+            cookies.set('accessToken', accessToken, {
                 httpOnly: true,
                 path: '/',
                 maxAge: 60 * 60 * 24
             });
 
-            cookies.set('refresh_token', refresh_token, {
+            cookies.set('refreshToken', refreshToken, {
                 httpOnly: true,
                 path: '/',
                 maxAge: 60 * 60 * 24
             });
+            locals.user = user;
+            console.log("Access token: ",accessToken);
+            console.log("Student: ",user);
 
-            console.log("Access token: ",access_token);
-            console.log("Student: ",student);
-
-            return { success: true, student};
+            return { success: true, user};
         } catch (err) {
             return fail(401, { message: (err as Error).message});
         }

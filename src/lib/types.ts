@@ -14,6 +14,10 @@ export type Student = {
     year: number;
 };
 
+export type User = {
+    user_id: string;
+}
+
 export type UserDataRow = {
     status: boolean;
     id: number;

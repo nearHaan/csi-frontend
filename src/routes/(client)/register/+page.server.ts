@@ -1,8 +1,8 @@
 import { registerUser } from "$lib/api/auth";
 import { validateRegistration } from "$lib/utils/validation";
 import { fail, type Actions } from "@sveltejs/kit";
-import type { PageLoad } from "../team/$types";
 import { getDepts } from "$lib/api/dept";
+import type { PageServerLoad } from "./$types";
 
 export const actions = {
     register: async ({ locals, cookies, request }) => {
@@ -23,13 +23,13 @@ export const actions = {
         try {
             const { access_token, refresh_token, student } = await registerUser(name as string, email as string, department as string, batch as string, year as unknown as number, phone_number as string, password as string, confirm_password as string);
 
-            cookies.set('access_token', access_token, {
+            cookies.set('accessToken', access_token, {
                 httpOnly: true,
                 path: '/',
                 maxAge: 60 * 60 * 24
             });
 
-            cookies.set('refresh_token', refresh_token, {
+            cookies.set('refreshToken', refresh_token, {
                 httpOnly: true,
                 path: '/',
                 maxAge: 60 * 60 * 24
@@ -45,7 +45,7 @@ export const actions = {
     }
 } satisfies Actions;
 
-export const load: PageLoad = async ({ fetch }) => {
+export const load: PageServerLoad = async () => {
     const deptList = await getDepts();
     return {
         deptList
