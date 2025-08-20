@@ -27,7 +27,7 @@
 				<ExecomCard
 					id={member.id}
 					name={member.name}
-					pos={member.position}
+					pos={member.role}
 					social_link={member.social_link}
 					profile_img={member.upload_image}
 				/>

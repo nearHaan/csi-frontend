@@ -55,7 +55,7 @@ export type ExecomMember = {
     year: number;
     academic_year: number;
     batch: string;
-    position: string;
+    role: string;
     upload_image: string;
     social_link: string;
 }
