@@ -1,4 +1,5 @@
 import { API_BASE_URL, JWT_SECRET } from "$env/static/private";
+import type { User } from "$lib/types";
 import jwt, { type JwtPayload } from 'jsonwebtoken';
 
 export async function registerUser(name: string, email: string, department_id: string, batch: string, year: number, phone_number: string, password: string, confirm_password: string) {
@@ -11,9 +12,8 @@ export async function registerUser(name: string, email: string, department_id: s
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
         console.log(error);
-        throw new Error(error.meesage);
+        throw new Error(error.message);
     }
-    console.log(res.json());
     return await res.json();
 }
 
@@ -27,7 +27,7 @@ export async function loginUser(email: string, password: string) {
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
         console.log(error);
-        throw new Error(error.meesage);
+        throw new Error(error.message);
     }
 
     return await res.json();
@@ -35,8 +35,8 @@ export async function loginUser(email: string, password: string) {
 
 export async function verifyToken(token: string) {
     try {
-        const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
-        return decoded;
+        const decoded = jwt.verify(token, JWT_SECRET) as User;
+        return { ok: true, user: decoded };
     } catch (err) {
         console.error('Invalid token:', err);
         throw new Error('Invalid or expired token');

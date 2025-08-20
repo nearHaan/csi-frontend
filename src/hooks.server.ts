@@ -7,14 +7,21 @@ export const handle: Handle = async({ event, resolve }) => {
     if(token){
         try{
             const res = await verifyToken(token);
-            console.log("Server Data: ",res.user);
+            console.log("Server Data: ", res);
             if(res.ok){
                 event.locals.user = res.user;
             } else {
                 event.locals.user = null;
+                // Clear invalid token
+                event.cookies.delete('accessToken', { path: '/' });
+                event.cookies.delete('refreshToken', { path: '/' });
             }
-        } catch {
+        } catch (error) {
+            console.error('Token verification failed:', error);
             event.locals.user = null;
+            // Clear invalid tokens
+            event.cookies.delete('accessToken', { path: '/' });
+            event.cookies.delete('refreshToken', { path: '/' });
         }
     } else {
         event.locals.user = null;
