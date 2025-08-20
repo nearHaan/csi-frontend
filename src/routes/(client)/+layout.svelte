@@ -4,13 +4,19 @@
 	let { children, data } = $props();
 
 	let isMenuOpen: boolean = $state(false);
+	let activePage: string = $state('home');
 
 	function toggleMenu(): void {
 		isMenuOpen = !isMenuOpen;
 	}
 
-	function closeMenu(): void {
+	function closeMenu(page: string): void {
 		isMenuOpen = false;
+		setActivePage(page);
+	}
+
+	function setActivePage(page: string){
+		activePage = page;
 	}
 </script>
 
@@ -32,15 +38,18 @@
 				</button>
 			</div>
 			<div class="flex items-center max-sm:hidden">
-				<ul class="flex gap-5">
+				<ul class="flex gap-5 text-[#808080]">
 					<li>
-						<a href="/">Home</a>
+						<a onclick={() => {setActivePage('home')}} class="{activePage === 'home' ? 'text-white':''}" href="/">Home</a>
 					</li>
 					<li>
-						<a href="/team">Team</a>
+						<a onclick={() => {setActivePage('leaderboard')}} class="{activePage === 'leaderboard' ? 'text-white':''}" href="/leaderboard">LeaderBoard</a>
 					</li>
 					<li>
-						<a href="/events">Events</a>
+						<a onclick={() => {setActivePage('team')}} class="{activePage === 'team' ? 'text-white':''}" href="/team">Team</a>
+					</li>
+					<li>
+						<a onclick={() => {setActivePage('events')}} class="{activePage === 'events' ? 'text-white':''}" href="/events">Events</a>
 					</li>
 					<li>
 						<a class="text-[#008CFF]" href={!data.user ? '/login' : '/logout'}
@@ -54,8 +63,8 @@
 	{#if isMenuOpen}
 		<div
 			class="fixed inset-0 z-20 bg-[#00000050] min-sm:hidden"
-			onclick={closeMenu}
-			onkeydown={(e) => e.key === 'Escape' && closeMenu()}
+			onclick={() => {closeMenu(activePage)}}
+			onkeydown={(e) => e.key === 'Escape' && closeMenu(activePage)}
 			role="button"
 			tabindex="0"
 		></div>
@@ -65,27 +74,36 @@
 			class="fixed top-0 right-0 z-30 h-screen w-64 transform bg-[#222222] shadow-lg transition-transform duration-300 ease-in-out min-sm:hidden"
 		>
 			<div class="flex h-20 items-center justify-end border-b-1 border-[#181818] p-5">
-				<button onclick={closeMenu} aria-label="Toggle menu">
+				<button onclick={() => {closeMenu(activePage)}} aria-label="Toggle menu">
 					<Menu />
 				</button>
 			</div>
 
 			<nav class="p-5">
-				<ul class="space-y-4">
+				<ul class="space-y-4 text-[#808080]">
 					<li>
 						<a
 							href="/"
-							class="block py-2 text-lg transition-colors hover:text-gray-300"
-							onclick={closeMenu}
+							class="block py-2 text-lg {activePage === 'home' ? 'text-white':''}"
+							onclick={() => {closeMenu('home')}}
 						>
 							Home
 						</a>
 					</li>
 					<li>
 						<a
+							href="/leaderboard"
+							class="block py-2 text-lg {activePage === 'leaderboard' ? 'text-white':''}"
+							onclick={() => {closeMenu('leaderboard')}}
+						>
+							LeaderBoard
+						</a>
+					</li>
+					<li>
+						<a
 							href="/team"
-							class="block py-2 text-lg transition-colors hover:text-gray-300"
-							onclick={closeMenu}
+							class="block py-2 text-lg {activePage === 'team' ? 'text-white':''}"
+							onclick={() => {closeMenu('team')}}
 						>
 							Team
 						</a>
@@ -93,8 +111,8 @@
 					<li>
 						<a
 							href="/events"
-							class="block py-2 text-lg transition-colors hover:text-gray-300"
-							onclick={closeMenu}
+							class="block py-2 text-lg {activePage === 'events' ? 'text-white':''}"
+							onclick={() => {closeMenu('events')}}
 						>
 							Events
 						</a>
@@ -102,8 +120,8 @@
 					<li>
 						<a
 							href={!data.user ? '/login' : '/logout'}
-							class="block py-2 text-lg text-[#008CFF] transition-colors hover:text-gray-300"
-							onclick={closeMenu}
+							class="block py-2 text-lg text-[#008CFF]"
+							onclick={() => {closeMenu(activePage)}}
 						>
 							{!data.user ? 'Login' : 'Logout'}
 						</a>

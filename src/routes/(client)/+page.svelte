@@ -175,39 +175,13 @@
 		</section>
 	{/if}
 	{#if isLoggedin}
-		<section id="leaderboard" class="border-x-1 border-[#181818] p-4">
+		<section id="myevents" class="border-x-1 border-[#181818] p-4">
 			<div class="m-4 border-1 border-[#181818] p-4 shadow-[4px_4px_0_0_[#181818]]">
 				<h2 class="text-2xl">My Events</h2>
 				<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
 					{#each myEvents as event}
 						<EventCard {event} details={{ status: 'myevent' }} />
 					{/each}
-				</div>
-			</div>
-			<div class="m-4 flex flex-col border-1 border-[#181818] shadow-[4px_4px_0_0_[#181818]]">
-				<h2 class="p-4 text-2xl">LeaderBoard</h2>
-				<div class="overflow-auto border-t-1 border-[#181818]">
-					<table>
-						<thead>
-							<tr>
-								<th scope="col" class="px-6">Rank</th>
-								<th scope="col" class="w-full px-6 py-3 text-left">Name</th>
-								<th scope="col" class="px-6 py-3">Points</th>
-							</tr>
-						</thead>
-						<tbody class="text-center">
-							<tr class="odd:bg-[#313131] even:bg-[#454545]">
-								<td class="">1</td>
-								<td class="px-6 py-3 text-left">Farhaan</td>
-								<td class="px-6 py-3">25</td>
-							</tr>
-							<tr class="odd:bg-[#313131] even:bg-[#454545]">
-								<td class="">1</td>
-								<td class="px-6 py-3 text-left">Farhaan</td>
-								<td class="px-6 py-3">25</td>
-							</tr>
-						</tbody>
-					</table>
 				</div>
 			</div>
 		</section>

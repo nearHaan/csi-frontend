@@ -1,9 +1,8 @@
-import { execomData } from "$lib/api/execom";
 import type { ExecomList } from "$lib/types";
-import type { PageServerLoad } from "./$types";
+import type { PageLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ fetch }) => {
-    const response = execomData(2025);
+export const load: PageLoad = async ({ fetch }) => {
+    // const response = execomData(2025);
     // const execom_list: ExecomList = await response.json();
     const execom_list: ExecomList = {
         'Admin Team': [
