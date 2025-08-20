@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { UserDataRow } from '$lib/types';
 	import { Search, Plus } from '@lucide/svelte';
+	import AdminTitleBtn from '$lib/components/admin-title-btn.svelte';
 	import AdminSearch from '$lib/components/admin-search.svelte';
 	import ActionsPane from '$lib/components/admin-actions.svelte'
 
@@ -43,6 +44,10 @@
 		}
 	];
 
+	function onAddClick(){
+		//
+	}
+
 	function onSearch(){
 		//
 	}
@@ -55,11 +60,7 @@
 <div
 	class="flex min-h-screen w-full max-w-7xl flex-col items-center border-x-1 border-black bg-[#222222] p-4 text-white"
 >
-	<div class="flex min-h-10 w-full items-center justify-between">
-		<h1 class="w-full text-left text-lg">Manage Users</h1>
-		<button class="h-full max-sm:hidden min-w-40 cursor-pointer rounded bg-white px-2 text-[#505050]">Add Student</button>
-		<button class="flex justify-center items-center rounded min-sm:hidden w-10 h-10 aspect-1 bg-white"><Plus color="black"/></button>
-	</div>
+	<AdminTitleBtn title="Manage Users" buttonText="Add Student" onPrimaryClick={onAddClick}/>
 	<!-- Search bar -->
 	<AdminSearch searchText={searchText} onSearch={onSearch}/>
 
