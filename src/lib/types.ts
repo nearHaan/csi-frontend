@@ -27,6 +27,7 @@ export type UserDataRow = {
     department: string;
     batch: string;
     year: number;
+    role: string;
 };
 
 export type Event = {
