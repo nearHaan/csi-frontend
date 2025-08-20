@@ -6,7 +6,7 @@
 	}
 </script>
 
-<div class="flex w-full flex-col items-start justify-start gap-y-2 p-4">
+<div class="flex w-full flex-col items-start justify-start gap-y-2 p-4 overflow-hidden">
 	<div class="flex gap-x-2 max-sm:flex-col">
 		<h3 class="max-sm:text-md text-[#757575] min-sm:text-lg">Event Name:</h3>
 		<p class="text-lg">Event Name</p>
