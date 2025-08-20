@@ -11,29 +11,41 @@ export const load: PageLoad = async ({ fetch }) => {
                 name: 'Raihan Rasheed',
                 position: 'Chair',
                 social_link: '',
-                profile_link: ''
+                upload_image: '',
+                year: 2027,
+                academic_year: 2025,
+                batch: 'B',
             },
             {
                 id: 2,
                 name: 'Raihan Rasheed',
                 position: 'Chair',
                 social_link: '',
-                profile_link: ''
+                upload_image: '',
+                year: 2027,
+                academic_year: 2025,
+                batch: 'B',
             },
             {
                 id: 3,
                 name: 'Raihan Rasheed',
                 position: 'Chair',
                 social_link: '',
-                profile_link: ''
+                upload_image: '',
+                year: 2027,
+                academic_year: 2025,
+                batch: 'B',
             },
             {
                 id: 4,
                 name: 'Raihan Rasheed',
                 position: 'Chair',
                 social_link: '',
-                profile_link: ''
-            }
+                upload_image: '',
+                year: 2027,
+                academic_year: 2025,
+                batch: 'B',
+            },
         ],
         'Tech Team': [
             {
@@ -41,29 +53,41 @@ export const load: PageLoad = async ({ fetch }) => {
                 name: 'Raihan Rasheed',
                 position: 'Chair',
                 social_link: '',
-                profile_link: ''
+                upload_image: '',
+                year: 2027,
+                academic_year: 2025,
+                batch: 'B',
             },
             {
                 id: 2,
                 name: 'Raihan Rasheed',
                 position: 'Chair',
                 social_link: '',
-                profile_link: ''
+                upload_image: '',
+                year: 2027,
+                academic_year: 2025,
+                batch: 'B',
             },
             {
                 id: 3,
                 name: 'Raihan Rasheed',
                 position: 'Chair',
                 social_link: '',
-                profile_link: ''
+                upload_image: '',
+                year: 2027,
+                academic_year: 2025,
+                batch: 'B',
             },
             {
                 id: 4,
                 name: 'Raihan Rasheed',
                 position: 'Chair',
                 social_link: '',
-                profile_link: ''
-            }
+                upload_image: '',
+                year: 2027,
+                academic_year: 2025,
+                batch: 'B',
+            },
         ],
     };
     return {

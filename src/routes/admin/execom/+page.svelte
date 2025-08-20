@@ -59,7 +59,7 @@
 <div
 	class="flex min-h-screen w-full max-w-7xl flex-col items-center border-x-1 border-black bg-[#222222] p-4 text-white"
 >
-	<AdminTitleBtn title="Manage Users" buttonText="Add Student" onPrimaryClick={onAddClick}/>
+	<AdminTitleBtn title="Manage Execom Members" buttonText="Add Member" onPrimaryClick={onAddClick}/>
 	<!-- Search bar -->
 	<AdminSearch searchText={searchText} onSearch={onSearch}/>
 

@@ -10,7 +10,7 @@
 					<a href="/admin/users">Manage Users</a>
 				</div>
 				<div class="flex items-center p-2">
-					<a href="/admin/dashboard">Manage Execom Members</a>
+					<a href="/admin/execom">Manage Execom Members</a>
 				</div>
 				<div class="flex items-center p-2">
 					<a href="/admin/dashboard">Call For Execom</a>

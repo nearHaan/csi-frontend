@@ -32,21 +32,32 @@ export type UserDataRow = {
 
 export type Event = {
     id: number;
-    title: string;
-    subtitle: string;
-    date: string;
-    time: string;
-    location: string;
-    fees: number;
+    name: string;
+    description: string;
     image: string;
+    venue: string;
+    reg_start_time: string;
+    reg_end_time: string;
+    event_start_time: string;
+    event_end_time: string;
+    fee_amount: number;
+    status: boolean;
+    max_registrations: number;
+    whatsapp_link: string;
+    food: boolean;
+    min_team_size: number;
+    max_team_size: number;
 }
 
 export type ExecomMember = {
     id: number;
     name: string;
+    year: number;
+    academic_year: number;
+    batch: string;
     position: string;
+    upload_image: string;
     social_link: string;
-    profile_link: string;
 }
 
 export type ExecomList = Record<string, ExecomMember[]>;

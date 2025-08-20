@@ -26,9 +26,9 @@
 	</div>
 	<div class="flex flex-col items-center p-4">
 		<div class="w-full">
-			<h3 class="text-lg font-bold text-gray-800">{event.title}</h3>
-			<p class="mb-2 text-sm text-gray-400">{event.subtitle}</p>
-			<p class="text-sm text-gray-600">{event.location}</p>
+			<h3 class="text-lg font-bold text-gray-800">{event.name}</h3>
+			<p class="mb-2 text-sm text-gray-400">{event.description}</p>
+			<p class="text-sm text-gray-600">{event.venue}</p>
 		</div>
 		{#if details?.status === 'upcoming'}
 			<button
@@ -49,7 +49,7 @@
 		{/if}
 	</div>
 	<div class="flex w-full items-center justify-between bg-[#BFBFBF] p-2 text-black">
-		<p class="font-bold">{event.date}</p>
-		<p>{event.time}</p>
+		<p class="font-bold">{event.event_start_time}</p>
+		<p>{event.event_end_time}</p>
 	</div>
 </div>
