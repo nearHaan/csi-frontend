@@ -1,4 +1,5 @@
-import { API_BASE_URL } from "$env/static/private";
+import { API_BASE_URL, JWT_SECRET } from "$env/static/private";
+import jwt, { type JwtPayload } from 'jsonwebtoken';
 
 export async function registerUser(name: string, email: string, department_id: string, batch: string, year: number, phone_number: string, password: string, confirm_password: string) {
     const res = await fetch(`${API_BASE_URL}/api/auth/register/`, {
@@ -30,4 +31,14 @@ export async function loginUser(email: string, password: string) {
     }
 
     return await res.json();
+}
+
+export async function verifyToken(token: string) {
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
+        return decoded;
+    } catch (err) {
+        console.error('Invalid token:', err);
+        throw new Error('Invalid or expired token');
+    }
 }
