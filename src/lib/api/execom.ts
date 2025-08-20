@@ -1,10 +1,9 @@
 import { API_BASE_URL } from "$env/static/private";
 
-export async function registerUser(name: string, email: string, department: string, batch: string, year: number, phone_number: string, password: string, confirm_password: string) {
-    const res = await fetch(`${API_BASE_URL}/api/auth/register/`, {
-        method: 'POST',
+export async function execomYears() {
+    const res = await fetch(`${API_BASE_URL}/api/execom-years/`, {
+        method: 'GET',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, department, batch, year, phone_number, password, confirm_password })
     });
 
     if (!res.ok) {
@@ -16,11 +15,10 @@ export async function registerUser(name: string, email: string, department: stri
     return await res.json();
 }
 
-export async function loginUser(email: string, password: string) {
-    const res = await fetch(`${API_BASE_URL}/api/auth/login/`, {
+export async function execomData(year: number) {
+    const res = await fetch(`${API_BASE_URL}/api/execom/${year}/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
     });
 
     if (!res.ok) {

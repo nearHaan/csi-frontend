@@ -2,8 +2,8 @@
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import type { SubmitFunction } from '@sveltejs/kit';
+	const { data } = $props();
 
-	const deptList: string[] = ['Computer Science', 'Electronics and Communication'];
 	const batches: string[] = ['A', 'B', 'C'];
 	const years: Record<number, string> = {
 		1: '1st year',
@@ -73,8 +73,8 @@
 							? 'border-red-500'
 							: ''}"
 					>
-						{#each deptList as dept}
-							<option>{dept}</option>
+						{#each data.deptList as dept(dept.department_id)}
+							<option value={dept.department_id}>{dept.name}</option>
 						{/each}
 					</select>
 					<p class="text-md w-fit">Batch</p>

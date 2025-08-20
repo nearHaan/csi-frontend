@@ -1,13 +1,15 @@
 import { registerUser } from "$lib/api/auth";
 import { validateRegistration } from "$lib/utils/validation";
 import { fail, type Actions } from "@sveltejs/kit";
+import type { PageLoad } from "../team/$types";
+import { getDepts } from "$lib/api/dept";
 
 export const actions = {
     register: async ({ locals, cookies, request }) => {
         const data = await request.formData();
         const name = data.get('name');
         const email = data.get('email');
-        const department = data.get('department');
+        const department = data.get('department') as string;
         const batch = data.get('batch');
         const year = 2025;//parseInt(data.get('year') as string); correct this**
         const phone_number = data.get('phone_number');
@@ -42,3 +44,10 @@ export const actions = {
         }
     }
 } satisfies Actions;
+
+export const load: PageLoad = async ({ fetch }) => {
+    const deptList = await getDepts();
+    return {
+        deptList
+    };
+}
