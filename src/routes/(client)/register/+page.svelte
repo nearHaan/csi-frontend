@@ -90,17 +90,13 @@
 						{/each}
 					</select>
 					<p class="text-md w-fit">Year</p>
-					<select
+					<input
 						name="year"
-						class="flex h-8 w-full items-center rounded-xs border-1 border-black {errorField ===
-						'year'
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField === 'phone_number'
 							? 'border-red-500'
 							: ''}"
-					>
-						{#each Object.entries(years) as [year, yearText] (year)}
-							<option value={year}>{yearText}</option>
-						{/each}
-					</select>
+						type="number"
+					/>
 					<p class="text-md w-fit">Phone</p>
 					<input
 						name="phone_number"
