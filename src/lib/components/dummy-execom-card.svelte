@@ -3,7 +3,7 @@
 >
 	{#each [1, 2, 3, 4] as card}
 		<div
-			class="mx-auto grid w-full max-w-7xl animate-pulse grid-cols-2 place-items-start justify-center gap-2 border-x-1 border-[#181818] p-5 sm:grid-cols-3 md:grid-cols-4"
+			class="mx-auto grid w-full max-w-7xl grid-cols-2 place-items-start justify-center gap-2 p-5 sm:grid-cols-3 md:grid-cols-4"
 		>
 			<div
 				class="m-3 flex w-40 flex-col items-center overflow-hidden border-1 border-black shadow-[4px_4px_black] lg:w-50"
