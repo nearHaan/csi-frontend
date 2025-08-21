@@ -27,8 +27,7 @@
 	});
 </script>
 
-<div class="flex flex-col">
-<DummyExecomCard/>
+
 <div class="flex w-full flex-col items-center">
 	<div
 		class="flex h-40 w-full max-w-7xl items-center justify-center border-x-1 border-b border-[#181818]"
@@ -66,6 +65,4 @@
 	{:else if execomList.state === 'failed'}
 		<div class="min-h-screen">Something went wrong</div>
 	{/if}
-</div>
-
 </div>
