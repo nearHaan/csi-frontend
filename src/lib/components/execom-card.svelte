@@ -13,7 +13,7 @@
 </script>
 
 <div class="m-3">
-	<div class="h-40 w-40 bg-black">
+	<div class="h-40 w-40 bg-black overflow-hidden">
         <img alt="profile-img" src={profile_img}/>
     </div>
 	<h2 class="mt-2 text-sm font-bold text-white">{name}</h2>
