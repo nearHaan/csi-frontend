@@ -5,12 +5,12 @@ export async function getExecomData(year: number) {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     });
-
+    
     if (!res.ok) {
         const error = await res.json().catch(() => ({}));
         console.log(error);
         throw new Error(error.meesage);
     }
 
-    return await res.json();
+    return await res.json()
 } 

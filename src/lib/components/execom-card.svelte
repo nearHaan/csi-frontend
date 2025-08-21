@@ -1,12 +1,10 @@
 <script lang="ts">
 	let {
-        id,
         name = "",
         pos = "",
         social_link = "",
         profile_img = "",
     } : {
-        id: number,
         name: string,
         pos: string,
         social_link: string,

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import ExecomCard from '$lib/components/execom-card.svelte';
+	import type { PageProps } from './$types';
 
-	const { data } = $props();
+	let { data }: PageProps = $props();
+
+	$effect(() => {
+		console.log(data)
+	})
 </script>
 
 <div class="flex w-full flex-col items-center">
@@ -23,9 +28,8 @@
 		<div
 			class="mx-auto grid w-full max-w-7xl grid-cols-2 place-items-center justify-center gap-2 border-x-1 border-[#181818] p-5 sm:grid-cols-3 md:grid-cols-4"
 		>
-			{#each members as member (member.id)}
+			{#each members as member}
 				<ExecomCard
-					id={member.id}
 					name={member.name}
 					pos={member.role}
 					social_link={member.social_link}

@@ -50,7 +50,6 @@ export type Event = {
 }
 
 export type ExecomMember = {
-    id: number;
     name: string;
     year: number;
     academic_year: number;

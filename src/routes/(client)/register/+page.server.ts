@@ -1,6 +1,6 @@
 import { validateRegistration } from "$lib/utils/validation";
 import { fail, type Actions } from "@sveltejs/kit";
-import { getDepts } from "$lib/api/dept";
+import { getDepts } from "$lib/server/api/dept";
 import type { PageServerLoad } from "./$types";
 
 export const actions = {
