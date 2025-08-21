@@ -31,7 +31,7 @@
 		<div
 			class="flex h-40 w-full max-w-7xl items-center justify-center border-x-1 border-b border-[#181818]"
 		>
-			<h1 class="text-5xl max-sm:text-2xl">MEET OUR TEAM</h1>
+			<h1 class="text-5xl max-sm:text-4xl">MEET OUR TEAM</h1>
 		</div>
 		{#each Object.entries(execomList.data) as [section, members]}
 			{#if section !== 'Core'}
@@ -52,8 +52,8 @@
 					<ExecomCard
 						name={member.name}
 						pos={member.role}
-						social_link={member.social_link}
-						profile_img={member.upload_image}
+						socialLink={member.social_link}
+						profileImg={member.upload_image}
 					/>
 				{/each}
 			</div>
