@@ -61,25 +61,19 @@ export type ExecomMember = {
 
 export type ExecomList = Record<string, ExecomMember[]>;
 
-// let execomList = {
-//     "techTeam": [
-//         {
-//             name: "Ram",
-//             pos: "Chair"
-//         },
-//         {
-//             name: "Joy",
-//             pos: "VC"
-//         },
-//     ],
-//     "design-team": [
-//         {
-//             name: "Tim",
-//             pos: "Chair"
-//         },
-//         {
-//             name: "Joy",
-//             pos: "VC"
-//         },
-//     ],
-// };
+export type LoadedData<T> = LoadingPending | LoadingSuccess<T> | LoadingFailure;
+
+type LoadingSuccess<T> = {
+    state: 'success';
+    data: T;
+};
+
+type LoadingPending = {
+    state: 'pending';
+    message: string;
+};
+
+type LoadingFailure = {
+    state: 'failed';
+    message: string;
+};

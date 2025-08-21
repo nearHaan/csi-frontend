@@ -1,6 +1,7 @@
 import { API_BASE_URL } from "$env/static/private";
+import type { ExecomList } from "$lib/types";
 
-export async function getExecomData(year: number) {
+export async function getExecomData(year: number): Promise<ExecomList> {
     const res = await fetch(`${API_BASE_URL}/api/execom/${year}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
