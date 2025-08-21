@@ -4,7 +4,7 @@
 	import { Power } from '@lucide/svelte';
 
 	let { data } = $props();
-	let isLoggedin: boolean = $derived(!!data.user);
+	let isLoggedin: boolean = $derived(!!data);
 	let isLightOn: boolean = $state(false);
 
 	function toggleLight(): void {
@@ -12,7 +12,7 @@
 	}
 
 	$effect(() => {
-		isLoggedin = !!data.user;
+		isLoggedin = !!data;
 	});
 
 	const myEvents: Event[] = [
