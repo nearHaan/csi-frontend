@@ -4,16 +4,12 @@
 	import { Power } from '@lucide/svelte';
 
 	let { data } = $props();
-	let isLoggedin: boolean = $derived(!!data);
+	let isLoggedin: boolean = $state(false);
 	let isLightOn: boolean = $state(false);
 
 	function toggleLight(): void {
 		isLightOn = !isLightOn;
 	}
-
-	$effect(() => {
-		isLoggedin = !!data;
-	});
 
 	const myEvents: Event[] = [
 		{
