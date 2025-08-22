@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import type { Event } from '$lib/types';
 
 	const {
@@ -14,6 +15,15 @@
 			isCertificateAvailable?: boolean;
 		};
 	} = $props();
+
+	function enableRegister() {
+		return !(event.isRegistrationFull || !event.regOpen);
+	}
+
+	function gotoPage() {
+		const link = event.team.max >= 1 ? `/events/register/event?id=${event.id}` : `/events/register/hackathon?id=${event.id}`
+		goto(link);
+	}
 </script>
 
 <div class="z-0 m-2 overflow-hidden bg-white shadow-[4px_4px_0_0_black]">
@@ -22,7 +32,7 @@
 	</div>
 	<div class="flex flex-col items-center p-4">
 		<div class="w-full">
-			{#if !event.regOpen || event.isRegistrationFull}
+			{#if (!event.regOpen || event.isRegistrationFull) && details.status === 'upcoming'}
 				<div class="flex w-full justify-end gap-x-2">
 					{#if event.isRegistrationFull}
 						<div class="w-fit rounded-full bg-yellow-400 px-2 py-1 text-xs text-black">Full</div>
@@ -37,13 +47,12 @@
 			<p class="text-sm text-gray-600">{event.venue}</p>
 		</div>
 		{#if details?.status === 'upcoming'}
-			<button disabled={!event.isRegistrationFull} class="mt-2 max-sm:ml-2"
-				><a
-					href={`/events/register/event?id=${event.id}`}
-					class="cursor-pointer {event.isRegistrationFull === true
-						? 'text-grey-300 bg-[#BFBFBF]'
-						: 'bg-[#BFBFBF] text-black'} p-2 hover:bg-black hover:text-white">Register</a
-				></button
+			<button
+				class="cursor-pointer {enableRegister()
+					? 'bg-[#BFBFBF] text-black hover:bg-black hover:text-white'
+					: 'bg-gray-200 text-gray-400'} mt-2 p-2 max-sm:ml-2"
+				onclick={gotoPage}
+				disabled={!enableRegister()}>Register</button
 			>
 		{:else if details?.status === 'myevent'}
 			<div class="flex w-full items-center justify-center max-sm:flex-col min-sm:gap-2">
