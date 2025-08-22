@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { goto, invalidateAll } from '$app/navigation';
 	import '../../app.css';
 	import { InstagramIcon, Linkedin, LinkedinIcon, MailIcon, Menu } from '@lucide/svelte';
 	let { children, data } = $props();
 
 	let isMenuOpen: boolean = $state(false);
 	let activePage: string = $state('home');
+	let isLoggedin: boolean | null = $derived(data.isUserLoggedIn);
 
 	function toggleMenu(): void {
 		isMenuOpen = !isMenuOpen;
@@ -15,8 +17,17 @@
 		setActivePage(page);
 	}
 
-	function setActivePage(page: string){
+	function setActivePage(page: string) {
 		activePage = page;
+	}
+
+	async function handleLoginLogout() {
+		if (isLoggedin) {
+			await goto('/logout');
+			await invalidateAll();
+		} else {
+			await goto('/login');
+		}
 	}
 </script>
 
@@ -40,20 +51,44 @@
 			<div class="flex items-center max-sm:hidden">
 				<ul class="flex gap-5 text-[#808080]">
 					<li>
-						<a onclick={() => {setActivePage('home')}} class="{activePage === 'home' ? 'text-white':''}" href="/">Home</a>
+						<a
+							onclick={() => {
+								setActivePage('home');
+							}}
+							class={activePage === 'home' ? 'text-white' : ''}
+							href="/">Home</a
+						>
 					</li>
 					<li>
-						<a onclick={() => {setActivePage('leaderboard')}} class="{activePage === 'leaderboard' ? 'text-white':''}" href="/leaderboard">LeaderBoard</a>
+						<a
+							onclick={() => {
+								setActivePage('leaderboard');
+							}}
+							class={activePage === 'leaderboard' ? 'text-white' : ''}
+							href="/leaderboard">LeaderBoard</a
+						>
 					</li>
 					<li>
-						<a onclick={() => {setActivePage('team')}} class="{activePage === 'team' ? 'text-white':''}" href="/team">Team</a>
+						<a
+							onclick={() => {
+								setActivePage('team');
+							}}
+							class={activePage === 'team' ? 'text-white' : ''}
+							href="/team">Team</a
+						>
 					</li>
 					<li>
-						<a onclick={() => {setActivePage('events')}} class="{activePage === 'events' ? 'text-white':''}" href="/events">Events</a>
+						<a
+							onclick={() => {
+								setActivePage('events');
+							}}
+							class={activePage === 'events' ? 'text-white' : ''}
+							href="/events">Events</a
+						>
 					</li>
 					<li>
-						<a class="text-[#008CFF]" href={!data.isUserLoggedIn ? '/login' : '/logout'}
-							>{!data.isUserLoggedIn ? 'Login' : 'Logout'}</a
+						<button class="cursor-pointer text-[#008CFF]" onclick={handleLoginLogout}
+							>{isLoggedin ? 'Logout' : 'Login'}</button
 						>
 					</li>
 				</ul>
@@ -63,7 +98,9 @@
 	{#if isMenuOpen}
 		<div
 			class="fixed inset-0 z-20 bg-[#00000050] min-sm:hidden"
-			onclick={() => {closeMenu(activePage)}}
+			onclick={() => {
+				closeMenu(activePage);
+			}}
 			onkeydown={(e) => e.key === 'Escape' && closeMenu(activePage)}
 			role="button"
 			tabindex="0"
@@ -74,7 +111,12 @@
 			class="fixed top-0 right-0 z-30 h-screen w-64 transform bg-[#222222] shadow-lg transition-transform duration-300 ease-in-out min-sm:hidden"
 		>
 			<div class="flex h-20 items-center justify-end border-b-1 border-[#181818] p-5">
-				<button onclick={() => {closeMenu(activePage)}} aria-label="Toggle menu">
+				<button
+					onclick={() => {
+						closeMenu(activePage);
+					}}
+					aria-label="Toggle menu"
+				>
 					<Menu />
 				</button>
 			</div>
@@ -84,8 +126,10 @@
 					<li>
 						<a
 							href="/"
-							class="block py-2 text-lg {activePage === 'home' ? 'text-white':''}"
-							onclick={() => {closeMenu('home')}}
+							class="block py-2 text-lg {activePage === 'home' ? 'text-white' : ''}"
+							onclick={() => {
+								closeMenu('home');
+							}}
 						>
 							Home
 						</a>
@@ -93,8 +137,10 @@
 					<li>
 						<a
 							href="/leaderboard"
-							class="block py-2 text-lg {activePage === 'leaderboard' ? 'text-white':''}"
-							onclick={() => {closeMenu('leaderboard')}}
+							class="block py-2 text-lg {activePage === 'leaderboard' ? 'text-white' : ''}"
+							onclick={() => {
+								closeMenu('leaderboard');
+							}}
 						>
 							LeaderBoard
 						</a>
@@ -102,8 +148,10 @@
 					<li>
 						<a
 							href="/team"
-							class="block py-2 text-lg {activePage === 'team' ? 'text-white':''}"
-							onclick={() => {closeMenu('team')}}
+							class="block py-2 text-lg {activePage === 'team' ? 'text-white' : ''}"
+							onclick={() => {
+								closeMenu('team');
+							}}
 						>
 							Team
 						</a>
@@ -111,20 +159,24 @@
 					<li>
 						<a
 							href="/events"
-							class="block py-2 text-lg {activePage === 'events' ? 'text-white':''}"
-							onclick={() => {closeMenu('events')}}
+							class="block py-2 text-lg {activePage === 'events' ? 'text-white' : ''}"
+							onclick={() => {
+								closeMenu('events');
+							}}
 						>
 							Events
 						</a>
 					</li>
 					<li>
-						<a
-							href={!data.isUserLoggedIn ? '/login' : '/logout'}
-							class="block py-2 text-lg text-[#008CFF]"
-							onclick={() => {closeMenu(activePage)}}
+						<button
+							class="cursor-pointer block py-2 text-left text-lg text-[#008CFF]"
+							onclick={async () => {
+								closeMenu(activePage);
+								await handleLoginLogout();
+							}}
 						>
-							{!data.isUserLoggedIn ? 'Login' : 'Logout'}
-						</a>
+							{isLoggedin?'Logout':'Login'}
+						</button>
 					</li>
 				</ul>
 			</nav>
@@ -141,7 +193,7 @@
 				</div>
 				<div class="flex w-full items-end justify-end gap-4 p-5 max-sm:justify-start">
 					<div class="rounded bg-[#444444] p-1">
-						<LinkedinIcon/>
+						<LinkedinIcon />
 					</div>
 					<div class="rounded bg-[#444444] p-1">
 						<InstagramIcon />
