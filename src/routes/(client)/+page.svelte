@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import EventCard from '$lib/components/event-card.svelte';
-	import type { Event } from '$lib/types';
+	import { type Event, type EventList, type LoadedData } from '$lib/types';
 	import { Power } from '@lucide/svelte';
 
 	let { data } = $props();
@@ -12,62 +13,24 @@
 		isLightOn = !isLightOn;
 	}
 
-	const myEvents: Event[] = [
-		// {
-		// 	id: 1,
-		// 	name: 'LINKEDIN 101',
-		// 	description: 'PROFILE POST OPPORTUNITIES',
-		// 	image: 'https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg',
-		// 	venue: 'string',
-		// 	reg_start_time: '12 OCT 2024',
-		// 	reg_end_time: '12 OCT 2024',
-		// 	event_start_time: '12 OCT 2024',
-		// 	event_end_time: '12 OCT 2024',
-		// 	fee_amount: 0,
-		// 	status: false,
-		// 	max_registrations: 10,
-		// 	whatsapp_link: 'string',
-		// 	food: false,
-		// 	min_team_size: 2,
-		// 	max_team_size: 3
-		// },
-		// {
-		// 	id: 2,
-		// 	name: 'LINKEDIN 101',
-		// 	description: 'PROFILE POST OPPORTUNITIES',
-		// 	image: 'https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg',
-		// 	venue: 'string',
-		// 	reg_start_time: '12 OCT 2024',
-		// 	reg_end_time: '12 OCT 2024',
-		// 	event_start_time: '12 OCT 2024',
-		// 	event_end_time: '12 OCT 2024',
-		// 	fee_amount: 0,
-		// 	status: false,
-		// 	max_registrations: 10,
-		// 	whatsapp_link: 'string',
-		// 	food: false,
-		// 	min_team_size: 2,
-		// 	max_team_size: 3
-		// },
-		// {
-		// 	id: 3,
-		// 	name: 'LINKEDIN 101',
-		// 	description: 'PROFILE POST OPPORTUNITIES',
-		// 	image: 'https://csisbtkmce.pythonanywhere.com/static/assets/img/letc.jpg',
-		// 	venue: 'string',
-		// 	reg_start_time: '12 OCT 2024',
-		// 	reg_end_time: '12 OCT 2024',
-		// 	event_start_time: '12 OCT 2024',
-		// 	event_end_time: '12 OCT 2024',
-		// 	fee_amount: 0,
-		// 	status: false,
-		// 	max_registrations: 10,
-		// 	whatsapp_link: 'string',
-		// 	food: false,
-		// 	min_team_size: 2,
-		// 	max_team_size: 3
-		// },
-	];
+	let myEvents = $state<LoadedData<EventList>>({
+		state: 'pending',
+		message: 'Loading events list'
+	});
+
+	onMount(async () => {
+		try {
+			myEvents = {
+				state: 'success',
+				data: await data.myevents
+			};
+		} catch (error) {
+			myEvents = {
+				state: 'failed',
+				message: 'Failed to load'
+			};
+		}
+	});
 </script>
 
 <svelte:head>
@@ -78,7 +41,9 @@
 	<!-- First Section -->
 	<section
 		id="hero"
-		class="relative flex {isLoggedin ? '' : 'min-h-180'} flex-col items-center justify-start border-x-1 border-[#181818]"
+		class="relative flex {isLoggedin
+			? ''
+			: 'min-h-180'} flex-col items-center justify-start border-x-1 border-[#181818]"
 	>
 		<div class="flex w-full items-center justify-between border-b-1 border-[#181818]">
 			<div class={isLightOn ? 'animate-pulse' : ''}>
@@ -104,7 +69,7 @@
 			</button>
 		</div>
 		{#if !isLoggedin}
-			<div class="min-md:px-10 h-full flex items-center w-full">
+			<div class="flex h-full w-full items-center min-md:px-10">
 				<div
 					class="min-lg:rounded-6xl flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col"
 				>
@@ -197,14 +162,20 @@
 	{/if}
 	{#if isLoggedin}
 		<section id="myevents" class="border-x-1 border-[#181818] p-4">
-			<div class="m-4 border-1 border-[#181818] p-4 shadow-[4px_4px_0_0_[#181818]]">
+			{#if myEvents.state === 'pending'}
+				Loading
+			{:else if myEvents.state === 'success'}
+				<div class="m-4 border-1 border-[#181818] p-4 shadow-[4px_4px_0_0_[#181818]]">
 				<h2 class="text-2xl">My Events</h2>
 				<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
-					{#each myEvents as event}
+					{#each myEvents.data['events'] as event}
 						<EventCard {event} details={{ status: 'myevent' }} />
 					{/each}
 				</div>
 			</div>
+			{:else if myEvents.state === 'failed'}
+				Someting went wrong
+			{/if}
 		</section>
 	{/if}
 </div>

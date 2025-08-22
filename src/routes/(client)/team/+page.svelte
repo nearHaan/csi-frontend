@@ -36,7 +36,7 @@
 	</div>
 	{#if execomList.state === 'success'}
 		{#each Object.entries(execomList.data) as [section, members]}
-			{#if section !== 'Core'}
+			{#if section !== 'Core' && section !== 'Faculty'}
 				<div class="flex w-full justify-center border-y-1 border-[#181818]">
 					<div
 						class="flex h-20 w-full max-w-7xl items-center justify-start border-x-1 border-[#181818]"
