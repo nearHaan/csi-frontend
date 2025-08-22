@@ -21,7 +21,7 @@
 	}
 
 	function gotoPage() {
-		const link = event.team.max >= 1 ? `/events/register/event?id=${event.id}` : `/events/register/hackathon?id=${event.id}`
+		const link = event.team.max > 1 ? `/events/register/hackathon?id=${event.id}` : `/events/register/event?id=${event.id}`
 		goto(link);
 	}
 </script>
