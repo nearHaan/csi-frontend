@@ -26,7 +26,7 @@
 	}
 </script>
 
-<div class="z-0 m-2 overflow-hidden bg-white shadow-[4px_4px_0_0_black]">
+<div class="z-0 m-2 flex flex-col overflow-hidden bg-white shadow-[4px_4px_0_0_black]">
 	<div class="aspect-3/2 w-full overflow-hidden bg-black">
 		<img alt="event-poster" src={event.image} />
 	</div>
@@ -68,7 +68,7 @@
 			</div>
 		{/if}
 	</div>
-	<div class="flex w-full items-center justify-between bg-[#BFBFBF] p-2 text-black">
+	<div class="mt-auto flex w-full items-center justify-between bg-[#BFBFBF] p-2 text-black">
 		<p class="font-bold">{event.eventStartDate}</p>
 		<p>
 			{event.durationDays > 0
