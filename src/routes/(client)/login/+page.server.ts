@@ -1,6 +1,6 @@
 import { loginUser } from "$lib/server/api/auth";
 import { validateLogin } from "$lib/utils/validation";
-import { fail, type Actions } from "@sveltejs/kit";
+import { fail, redirect, type Actions } from "@sveltejs/kit";
 
 export const actions = {
     login: async ({ cookies, request }) => {
@@ -17,8 +17,16 @@ export const actions = {
             const { accessToken, refreshToken } = await loginUser(email as string, password as string);
             cookies.set('accessToken', accessToken, {
                 httpOnly: true,
-                path: '/'
-            })
+                path: '/',
+                maxAge: 60 * 60 * 15,
+            });
+            cookies.set('refreshToken', refreshToken, {
+                httpOnly: true,
+                path: '/',
+                maxAge: 60 * 60 * 24 * 7,
+            });
+
+            return {sucess: true};
         } catch (err){
             console.log((err as Error).message);
             return fail(400, {message: (err as Error).message});
