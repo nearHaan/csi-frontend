@@ -60,6 +60,7 @@ export type ExecomMember = {
 }
 
 export type ExecomList = Record<string, ExecomMember[]>;
+export type EventList = Record<string, Event[]>;
 
 export type LoadedData<T> = LoadingPending | LoadingSuccess<T> | LoadingFailure;
 
