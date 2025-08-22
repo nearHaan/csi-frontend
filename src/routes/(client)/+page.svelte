@@ -4,7 +4,8 @@
 	import { Power } from '@lucide/svelte';
 
 	let { data } = $props();
-	let isLoggedin: boolean = $state(false);
+	let isLoggedin: boolean | null = $derived(data.isUserLoggedIn);
+	console.log(data.isUserLoggedIn);
 	let isLightOn: boolean = $state(false);
 
 	function toggleLight(): void {

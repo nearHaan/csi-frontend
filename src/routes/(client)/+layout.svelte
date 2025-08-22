@@ -52,8 +52,8 @@
 						<a onclick={() => {setActivePage('events')}} class="{activePage === 'events' ? 'text-white':''}" href="/events">Events</a>
 					</li>
 					<li>
-						<a class="text-[#008CFF]" href={data ? '/login' : '/logout'}
-							>{data ? 'Login' : 'Logout'}</a
+						<a class="text-[#008CFF]" href={!data.isUserLoggedIn ? '/login' : '/logout'}
+							>{!data.isUserLoggedIn ? 'Login' : 'Logout'}</a
 						>
 					</li>
 				</ul>
@@ -119,11 +119,11 @@
 					</li>
 					<li>
 						<a
-							href={!data ? '/login' : '/logout'}
+							href={!data.isUserLoggedIn ? '/login' : '/logout'}
 							class="block py-2 text-lg text-[#008CFF]"
 							onclick={() => {closeMenu(activePage)}}
 						>
-							{!data ? 'Login' : 'Logout'}
+							{!data.isUserLoggedIn ? 'Login' : 'Logout'}
 						</a>
 					</li>
 				</ul>
