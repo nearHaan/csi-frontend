@@ -52,8 +52,8 @@
 						<a onclick={() => {setActivePage('events')}} class="{activePage === 'events' ? 'text-white':''}" href="/events">Events</a>
 					</li>
 					<li>
-						<a class="text-[#008CFF]" href={!data ? '/login' : '/logout'}
-							>{!data ? 'Login' : 'Logout'}</a
+						<a class="text-[#008CFF]" href={data ? '/login' : '/logout'}
+							>{data ? 'Login' : 'Logout'}</a
 						>
 					</li>
 				</ul>

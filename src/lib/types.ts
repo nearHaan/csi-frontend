@@ -36,17 +36,24 @@ export type Event = {
     description: string;
     image: string;
     venue: string;
-    reg_start_time: string;
-    reg_end_time: string;
-    event_start_time: string;
-    event_end_time: string;
-    fee_amount: number;
-    status: boolean;
-    max_registrations: number;
-    whatsapp_link: string;
-    food: boolean;
-    min_team_size: number;
-    max_team_size: number;
+    eventStartDate: string;
+    eventStartTime: string;
+    eventEndDate: string;
+    eventEndTime: string;
+    regOpen: boolean;
+    isRegistrationFull: boolean;
+    regStartDate: string;
+    regStartTime: string;
+    regEndDate: string;
+    regEndTime: string;
+    durationDays: number;
+    fee: string;
+    food: string;
+    team: {
+        min: number,
+        max: number,
+    },
+
 }
 
 export type ExecomMember = {

@@ -2,7 +2,7 @@
 	import { type EventList, type LoadedData } from '$lib/types';
 	import { onMount } from 'svelte';
 	import type { PageProps } from './$types';
-	import EventCard from '$lib/components/event-card.svelte'
+	import EventCard from '$lib/components/event-card.svelte';
 
 	let { data }: PageProps = $props();
 
@@ -150,11 +150,25 @@
 </svelte:head>
 
 {#if execomList.state === 'pending'}
-	<div class="min-h-screen">
-		Loading
-	</div>
+	<div class="min-h-screen">Loading</div>
 {:else if execomList.state === 'success'}
 	<div class="min-h-screen w-full max-w-7xl border-x-1 border-[#181818] bg-[#222222]">
+		{#if execomList.data['ongoing'].length > 0}
+			<div class="">
+				<div class="flex w-full justify-center border-y-1 border-[#181818]">
+					<div class="flex h-20 w-full max-w-7xl items-center justify-start">
+						<h2 class="flex h-full items-center justify-center bg-black px-10 text-2xl">
+							Ongoing Events
+						</h2>
+					</div>
+				</div>
+				<div class="grid grid-cols-1 gap-8 px-6 py-8 md:grid-cols-2 lg:grid-cols-3">
+					{#each execomList.data['ongoing'] as event (event.id)}
+						<EventCard {event} />
+					{/each}
+				</div>
+			</div>
+		{/if}
 		{#if execomList.data['upcoming'].length > 0}
 			<div class="flex w-full justify-center border-b-1 border-[#181818]">
 				<div class="flex h-20 w-full max-w-7xl items-center justify-start">
@@ -187,7 +201,5 @@
 		{/if}
 	</div>
 {:else if execomList.state === 'failed'}
-	<div class="min-h-screen">
-		Something went wrong
-	</div>
+	<div class="min-h-screen">Something went wrong</div>
 {/if}
