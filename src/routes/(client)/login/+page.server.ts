@@ -25,6 +25,7 @@ export const actions = {
                 path: '/',
                 maxAge: 60 * 60 * 24 * 7,
             });
+            console.log(accessToken);
 
             return {sucess: true};
         } catch (err){

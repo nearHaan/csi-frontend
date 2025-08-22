@@ -22,7 +22,7 @@
 		try {
 			myEvents = {
 				state: 'success',
-				data: await data.myevents
+				data: await data.myevents as EventList
 			};
 		} catch (error) {
 			myEvents = {
