@@ -27,7 +27,6 @@
 	});
 </script>
 
-
 <div class="flex w-full flex-col items-center">
 	<div
 		class="flex h-40 w-full max-w-7xl items-center justify-center border-x-1 border-b border-[#181818]"
@@ -47,21 +46,36 @@
 					</div>
 				</div>
 			{/if}
-			<div
-				class="mx-auto grid w-full max-w-7xl grid-cols-2 place-items-start justify-center gap-2 border-x-1 border-[#181818] p-5 sm:grid-cols-3 md:grid-cols-4"
-			>
-				{#each members as member}
-					<ExecomCard
-						name={member.name}
-						pos={member.role}
-						socialLink={member.social_link}
-						profileImg={member.upload_image}
-					/>
-				{/each}
-			</div>
+			{#if section !== 'Faculty'}
+				<div
+					class="mx-auto grid w-full max-w-7xl grid-cols-2 place-items-start justify-center gap-2 border-x-1 border-[#181818] p-5 sm:grid-cols-3 md:grid-cols-4"
+				>
+					{#each members as member}
+						<ExecomCard
+							name={member.name}
+							pos={member.role}
+							socialLink={member.social_link}
+							profileImg={member.upload_image}
+						/>
+					{/each}
+				</div>
+			{:else}
+				<div
+					class="mx-auto flex w-full max-w-7xl justify-center gap-2 border-x-1 border-[#181818] p-5"
+				>
+					{#each members as member}
+						<ExecomCard
+							name={member.name}
+							pos={member.role}
+							socialLink={member.social_link}
+							profileImg={member.upload_image}
+						/>
+					{/each}
+				</div>
+			{/if}
 		{/each}
 	{:else if execomList.state === 'pending'}
-		<DummyExecomCard/>
+		<DummyExecomCard />
 	{:else if execomList.state === 'failed'}
 		<div class="min-h-screen">Something went wrong</div>
 	{/if}
