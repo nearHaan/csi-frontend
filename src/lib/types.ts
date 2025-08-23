@@ -66,6 +66,12 @@ export type ExecomMember = {
     social_link: string;
 }
 
+export type LeaderBoard = {
+    rank: number;
+    name: string;
+    points: number;
+}
+
 export type ExecomList = Record<string, ExecomMember[]>;
 export type EventList = Record<string, Event[]>;
 
