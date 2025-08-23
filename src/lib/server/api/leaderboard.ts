@@ -1,7 +1,7 @@
 import { API_BASE_URL } from "$env/static/private";
 import type { LeaderBoard } from "$lib/types";
 
-export async function getLeaderboard(): Promise<LeaderBoard> {
+export async function getLeaderboard(): Promise<LeaderBoard[]> {
     const res = await fetch(`${API_BASE_URL}/api/leaderboard/`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
