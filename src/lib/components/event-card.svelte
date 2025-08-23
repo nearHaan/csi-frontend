@@ -21,7 +21,10 @@
 	}
 
 	function gotoPage() {
-		const link = event.team.max > 1 ? `/events/register/hackathon?id=${event.id}` : `/events/register/event?id=${event.id}`
+		const link =
+			event.team.max > 1
+				? `/events/register/hackathon?id=${event.id}`
+				: `/events/register/event?id=${event.id}`;
 		goto(link);
 	}
 </script>
@@ -30,18 +33,34 @@
 	<div class="aspect-3/2 w-full overflow-hidden bg-black">
 		<img alt="event-poster" src={event.image} />
 	</div>
-	<div class="flex flex-col items-center p-4">
-		<div class="w-full">
-			{#if (!event.regOpen || event.isRegistrationFull) && details.status === 'upcoming'}
-				<div class="flex w-full justify-end gap-x-2">
-					{#if event.isRegistrationFull}
-						<div class="w-fit rounded-full bg-yellow-400 px-2 py-1 text-xs text-black">Full</div>
-					{/if}
-					{#if !event.regOpen}
-						<div class="w-fit rounded-full bg-red-500 px-2 py-1 text-xs text-white">Closed</div>
-					{/if}
+	{#if (!event.regOpen || event.isRegistrationFull) && details.status === 'upcoming'}
+		<div class="flex w-full justify-end gap-x-2">
+			{#if event.isRegistrationFull}
+				<div class="marquee-container flex items-center bg-yellow-200 py-1">
+					<div class="marquee-track text-xs font-bold text-yellow-800">
+						<span>Registration Full | </span>
+						<span>Registration Full | </span>
+						<span>Registration Full | </span>
+						<span>Registration Full | </span>
+						<span>Registration Full | </span>
+					</div>
 				</div>
 			{/if}
+			{#if !event.regOpen}
+				<div class="marquee-container flex items-center bg-red-200 py-1">
+					<div class="marquee-track text-xs font-bold text-red-800">
+						<span>Registration Closed | </span>
+						<span>Registration Closed | </span>
+						<span>Registration Closed | </span>
+						<span>Registration Closed | </span>
+						<span>Registration Closed | </span>
+					</div>
+				</div>
+			{/if}
+		</div>
+	{/if}
+	<div class="flex flex-col items-center p-4">
+		<div class="w-full">
 			<h3 class="text-lg font-bold text-gray-800">{event.name}</h3>
 			<p class="mb-2 text-sm text-gray-400">{event.description}</p>
 			<p class="text-sm text-gray-600">{event.venue}</p>
