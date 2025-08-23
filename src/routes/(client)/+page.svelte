@@ -3,6 +3,7 @@
 	import EventCard from '$lib/components/event-card.svelte';
 	import { type Event, type EventList, type LoadedData } from '$lib/types';
 	import { Power } from '@lucide/svelte';
+	import { goto } from '$app/navigation';
 
 	let { data } = $props();
 	let isLoggedin: boolean | null = $derived(data.isUserLoggedIn);
@@ -88,7 +89,7 @@
 							foster creativity, and provide a platform for students to explore and excel in the
 							world of technology.
 						</p>
-						<button class="mt-10 rounded-full bg-[#008CFF] p-3">Ready to join CSI?</button>
+						<button onclick={()=>{goto('/login')}} class="cursor-pointer mt-10 rounded-lg bg-[#008CFF] py-3 px-4">Ready to join CSI?</button>
 					</div>
 				</div>
 			</div>
@@ -156,7 +157,7 @@
 				<h2 class="mb-12 text-2xl font-light tracking-wider max-md:w-80 md:text-3xl">
 					SO ARE YOU READY TO JOIN CSI?
 				</h2>
-				<button class="mt-10 rounded-full bg-[#008CFF] px-10 py-5">YES I AM!</button>
+				<button onclick={()=>{goto('/login')}} class="cursor-pointer mt-10 rounded-full bg-[#008CFF] px-10 py-5">YES I AM!</button>
 			</div>
 		</section>
 	{/if}
