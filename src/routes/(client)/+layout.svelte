@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { goto, invalidateAll } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import '../../app.css';
 	import { InstagramIcon, Linkedin, LinkedinIcon, MailIcon, Menu } from '@lucide/svelte';
+	import { isLoggedin } from '$lib/stores/auth';
+	import { PUBLIC_API_URL } from '$env/static/public';
 	let { children, data } = $props();
 
 	let isMenuOpen: boolean = $state(false);
 	let activePage: string = $state('home');
-	let isLoggedin: boolean | null = $derived(data.isUserLoggedIn);
 
 	function toggleMenu(): void {
 		isMenuOpen = !isMenuOpen;
@@ -22,13 +24,64 @@
 	}
 
 	async function handleLoginLogout() {
-		if (isLoggedin) {
-			await goto('/logout');
-			await invalidateAll();
+		if ($isLoggedin) {
+			isLoggedin.set(false);
+			localStorage.removeItem('accessToken');
 		} else {
 			await goto('/login');
 		}
 	}
+
+	onMount(async () => {
+		const accessToken = localStorage.getItem('accessToken');
+
+		if (!accessToken) {
+			isLoggedin.set(false);
+			return;
+		}
+
+		try {
+			const res = await fetch(`${PUBLIC_API_URL}/api/user/`, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${accessToken}`
+				},
+				credentials: 'include'
+			});
+
+			if (res.status === 401) {
+				const resRefresh = await fetch(`${PUBLIC_API_URL}/api/refresh/`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					credentials: 'include'
+				});
+
+				if (resRefresh.status === 401) {
+					localStorage.removeItem('accessToken');
+					isLoggedin.set(false);
+					goto('/login');
+				} else if (resRefresh.status === 200) {
+					const { accessToken: newToken } = await resRefresh.json();
+					localStorage.setItem('accessToken', newToken);
+					isLoggedin.set(true);
+				} else {
+					throw new Error('Refresh request failed');
+				}
+			} else if (res.status === 200) {
+				isLoggedin.set(true);
+			} else {
+				throw new Error('User request failed');
+			}
+		} catch (error) {
+			console.error('Auth check failed:', error);
+			localStorage.removeItem('accessToken');
+			isLoggedin.set(false);
+			goto('/login');
+		}
+	});
 </script>
 
 <svelte:head>
@@ -88,7 +141,7 @@
 					</li>
 					<li>
 						<button class="cursor-pointer text-[#008CFF]" onclick={handleLoginLogout}
-							>{isLoggedin ? 'Logout' : 'Login'}</button
+							>{$isLoggedin ? 'Logout' : 'Login'}</button
 						>
 					</li>
 				</ul>
@@ -169,13 +222,13 @@
 					</li>
 					<li>
 						<button
-							class="cursor-pointer block py-2 text-left text-lg text-[#008CFF]"
+							class="block cursor-pointer py-2 text-left text-lg text-[#008CFF]"
 							onclick={async () => {
 								closeMenu(activePage);
 								await handleLoginLogout();
 							}}
 						>
-							{isLoggedin?'Logout':'Login'}
+							{$isLoggedin ? 'Logout' : 'Login'}
 						</button>
 					</li>
 				</ul>

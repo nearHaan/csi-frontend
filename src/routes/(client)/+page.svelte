@@ -4,10 +4,10 @@
 	import { type Event, type EventList, type LoadedData } from '$lib/types';
 	import { Power } from '@lucide/svelte';
 	import { goto } from '$app/navigation';
+	import { isLoggedin } from '$lib/stores/auth.js';
+	import { PUBLIC_API_URL } from '$env/static/public';
 
 	let { data } = $props();
-	let isLoggedin: boolean | null = $derived(data.isUserLoggedIn);
-	console.log(data.isUserLoggedIn);
 	let isLightOn: boolean = $state(false);
 
 	function toggleLight(): void {
@@ -20,16 +20,28 @@
 	});
 
 	onMount(async () => {
-		try {
-			myEvents = {
-				state: 'success',
-				data: await data.myevents as EventList
-			};
-		} catch (error) {
-			myEvents = {
-				state: 'failed',
-				message: 'Failed to load'
-			};
+		if ($isLoggedin) {
+			const accessToken: string = localStorage.getItem('accessToken')!;
+			try {
+				const res = await fetch(`${PUBLIC_API_URL}/api/`, {
+					method: 'GET',
+					headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` }
+				});
+				if (!res.ok) {
+					const error = await res.json().catch(() => ({}));
+					console.log(error);
+					throw new Error(error.message);
+				}
+				myEvents = {
+					state: 'success',
+					data: (await res.json()) as unknown as EventList
+				};
+			} catch (error) {
+				myEvents = {
+					state: 'failed',
+					message: 'Failed to load'
+				};
+			}
 		}
 	});
 </script>
@@ -42,7 +54,7 @@
 	<!-- First Section -->
 	<section
 		id="hero"
-		class="relative flex {isLoggedin
+		class="relative flex {$isLoggedin
 			? ''
 			: 'min-h-180'} flex-col items-center justify-start border-x-1 border-[#181818]"
 	>
@@ -69,7 +81,7 @@
 				<Power color={isLightOn ? '#008CFF' : '#ffffff'} />
 			</button>
 		</div>
-		{#if !isLoggedin}
+		{#if !$isLoggedin}
 			<div class="flex h-full w-full items-center min-md:px-10">
 				<div
 					class="min-lg:rounded-6xl flex items-center overflow-hidden rounded-4xl bg-[#2D2D2D] max-md:m-10 max-md:flex-col"
@@ -89,7 +101,13 @@
 							foster creativity, and provide a platform for students to explore and excel in the
 							world of technology.
 						</p>
-						<button onclick={()=>{goto('/login')}} class="cursor-pointer mt-10 rounded-lg bg-[#008CFF] py-3 px-4">Ready to join CSI?</button>
+						<button
+							onclick={() => {
+								goto('/login');
+							}}
+							class="mt-10 cursor-pointer rounded-lg bg-[#008CFF] px-4 py-3"
+							>Ready to join CSI?</button
+						>
 					</div>
 				</div>
 			</div>
@@ -97,7 +115,7 @@
 	</section>
 
 	<!-- About Section -->
-	{#if !isLoggedin}
+	{#if !$isLoggedin}
 		<section
 			id="about"
 			class="relative flex min-h-180 flex-col items-center border-1 border-[#181818] bg-[#222222]"
@@ -157,23 +175,28 @@
 				<h2 class="mb-12 text-2xl font-light tracking-wider max-md:w-80 md:text-3xl">
 					SO ARE YOU READY TO JOIN CSI?
 				</h2>
-				<button onclick={()=>{goto('/login')}} class="cursor-pointer mt-10 rounded-full bg-[#008CFF] px-10 py-5">YES I AM!</button>
+				<button
+					onclick={() => {
+						goto('/login');
+					}}
+					class="mt-10 cursor-pointer rounded-full bg-[#008CFF] px-10 py-5">YES I AM!</button
+				>
 			</div>
 		</section>
 	{/if}
-	{#if isLoggedin}
+	{#if $isLoggedin}
 		<section id="myevents" class="border-x-1 border-[#181818] p-4">
 			{#if myEvents.state === 'pending'}
 				Loading
 			{:else if myEvents.state === 'success'}
 				<div class="m-4 border-1 border-[#181818] p-4 shadow-[4px_4px_0_0_[#181818]]">
-				<h2 class="text-2xl">My Events</h2>
-				<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
-					{#each myEvents.data['events'] as event}
-						<EventCard {event} details={{ status: 'myevent' }} />
-					{/each}
+					<h2 class="text-2xl">My Events</h2>
+					<div class="flex flex-col gap-4 min-sm:grid sm:grid-cols-2 md:grid-cols-3">
+						{#each myEvents.data['events'] as event}
+							<EventCard {event} details={{ status: 'myevent' }} />
+						{/each}
+					</div>
 				</div>
-			</div>
 			{:else if myEvents.state === 'failed'}
 				Someting went wrong
 			{/if}

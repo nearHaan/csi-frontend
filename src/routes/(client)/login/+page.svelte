@@ -1,28 +1,51 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { goto, invalidateAll } from '$app/navigation';
+	import { PUBLIC_API_URL } from '$env/static/public';
+	import { isLoggedin } from '$lib/stores/auth';
+	import { validateLogin } from '$lib/utils/validation';
 	import type { SubmitFunction } from '@sveltejs/kit';
 
 	let errorText = $state('');
 	let errorField = $state('');
 
-	const handleEnhance: SubmitFunction = () => {
-		return async ({ result }) => {
-			if (result.type === 'success' && result.status === 200) {
-				goto('/', { invalidateAll: true });
-			} else if (result.type === 'redirect') {
-				goto(result.location, { invalidateAll: true });
+	const handleSubmit = async (e: SubmitEvent) => {
+		e.preventDefault();
+		const form = e?.target as HTMLFormElement;
+		const formData = new FormData(form);
+
+		const email = formData.get('email') as string;
+		const password = formData.get('password') as string;
+
+		const error = validateLogin(email, password);
+		if (error) {
+			errorText = error;
+			return;
+		}
+
+		try {
+			const res = await fetch(`${PUBLIC_API_URL}/api/auth/login`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, password })
+			});
+
+			const data = await res.json();
+			console.log('data: ', data);
+
+			if (res.ok) {
+				localStorage.setItem('accessToken', data.accessToken);
+				isLoggedin.set(true);
+				await invalidateAll();
+				await goto('/');
 			} else {
-				const msg =
-					result.type === 'error'
-						? result.error.message
-						: result.data?.message || 'Something went wrong';
-				const errorfield = result.type !== 'error'?result.data?.errorfield || '' : '';
-				errorText = msg;
-				errorField = errorfield;
-				console.error(msg);
+				errorText = data.error || 'Login failed';
+				errorField = data.errorfield || '';
 			}
-		};
+		} catch (err) {
+			errorText = (err as Error).message || 'Login Failed';
+			errorField = '';
+		}
 	};
 </script>
 
@@ -37,13 +60,13 @@
 			</div>
 			<h3 class="w-fit bg-[#BFBFBF] p-4">Login</h3>
 		</div>
-		<form action="?/login" method="post" use:enhance={handleEnhance}>
+		<form onsubmit={handleSubmit}>
 			<div class="flex w-full flex-col items-center p-4">
 				<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
 					<p class="text-md w-fit">Email</p>
 					<input
 						name="email"
-						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField==='email'
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField === 'email'
 							? 'border-red-500'
 							: ''}"
 						type="email"
@@ -51,7 +74,7 @@
 					<p class="text-md w-fit">Password</p>
 					<input
 						name="password"
-						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField==='password'
+						class="h-8 w-full rounded-xs border-1 border-black p-2 {errorField === 'password'
 							? 'border-red-500'
 							: ''}"
 						type="password"

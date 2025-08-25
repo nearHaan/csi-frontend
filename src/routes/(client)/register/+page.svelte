@@ -1,37 +1,85 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
-	import type { SubmitFunction } from '@sveltejs/kit';
-	const { data } = $props();
+	import { goto, invalidateAll } from '$app/navigation';
+	import { PUBLIC_API_URL } from '$env/static/public';
+	import { isLoggedin } from '$lib/stores/auth';
+	import { validateRegistration } from '$lib/utils/validation';
+	import { onMount } from 'svelte';
 
 	const batches: string[] = ['A', 'B', 'C'];
-	const years: Record<number, string> = {
-		1: '1st year',
-		2: '2nd year',
-		3: '3rd year',
-		4: '4th year'
-	};
 
+	let deptList: { department_id: string; name: string }[] = $state([]);
 	let errorText = $state('');
 	let errorField = $state('');
 
-	const handleEnhance: SubmitFunction = () => {
-		return async ({ result }) => {
-			if (result.type === 'success' && result.status === 200) {
-				goto('/', { invalidateAll: true });
-			} else if (result.type === 'redirect') {
-				goto(result.location, { invalidateAll: true });
-			} else {
-				const msg =
-					result.type === 'error'
-						? result.error.message
-						: result.data?.message || 'Something went wrong';
-				const errorfield = result.type !== 'error' ? result.data?.errorfield || '' : '';
-				errorText = msg;
-				errorField = errorfield;
-				console.error(errorfield);
+	onMount(async () => {
+		try {
+			const res = await fetch(`${PUBLIC_API_URL}/api/data/getDepts`);
+			if (res.ok) {
+				const data = await res.json();
+				deptList = data.map((d: { department_id: string; department_name: string }) => ({
+					department_id: d.department_id,
+					name: d.department_name
+				}));
 			}
+		} catch (err) {
+			console.error('Failed to load departments', err);
+		}
+	});
+
+	const handleSubmit = async (e: SubmitEvent) => {
+		e.preventDefault();
+		const form = e.target as HTMLFormElement;
+		const formData = new FormData(form);
+
+		const payload = {
+			name: formData.get('name'),
+			email: formData.get('email'),
+			department: formData.get('department'),
+			batch: formData.get('batch'),
+			year: formData.get('year'),
+			phone_number: formData.get('phone_number'),
+			password: formData.get('password'),
+			confirm_password: formData.get('confirm_password')
 		};
+
+		const error = validateRegistration(
+			payload.name,
+			payload.email,
+			payload.department,
+			payload.batch,
+			payload.year,
+			payload.phone_number,
+			payload.password,
+			payload.confirm_password
+		);
+		if (error) {
+			errorText = error;
+			return;
+		}
+
+		try {
+			const res = await fetch(`${PUBLIC_API_URL}/api/auth/register`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(payload)
+			});
+
+			const data = await res.json();
+			console.log('data:', data);
+
+			if (res.ok) {
+				localStorage.setItem('accessToken', data.accessToken);
+				isLoggedin.set(true);
+				await invalidateAll();
+				await goto('/');
+			} else {
+				errorText = data.message || 'Registration failed';
+				errorField = data.errorfield || '';
+			}
+		} catch (err) {
+			errorText = (err as Error).message || 'Registration failed';
+			errorField = '';
+		}
 	};
 </script>
 
@@ -46,7 +94,7 @@
 			</div>
 			<h3 class="w-fit bg-[#BFBFBF] p-4">Register</h3>
 		</div>
-		<form action="?/register" method="post" use:enhance={handleEnhance}>
+		<form onsubmit={handleSubmit}>
 			<div class="flex w-full flex-col items-center p-4">
 				<div class="grid w-full auto-cols-fr grid-cols-[120px_auto] gap-5">
 					<p class="text-md w-fit">Name</p>
@@ -73,7 +121,7 @@
 							? 'border-red-500'
 							: ''}"
 					>
-						{#each data.deptList as dept(dept.department_id)}
+						{#each deptList as dept (dept.department_id)}
 							<option value={dept.department_id}>{dept.name}</option>
 						{/each}
 					</select>
