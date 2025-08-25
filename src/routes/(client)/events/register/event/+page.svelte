@@ -23,7 +23,7 @@
 			}
 
 			try {
-				const res = await fetch(`${PUBLIC_API_URL}/api/event/${id}`, {
+				const res = await fetch(`${PUBLIC_API_URL}/api/events/${id}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json',
