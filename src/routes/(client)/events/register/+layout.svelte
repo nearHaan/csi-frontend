@@ -1,9 +1,9 @@
 <script lang="ts">
-    let { children } = $props();
+	let { children } = $props();
 </script>
 
 <div
-	class="flex w-full min-h-screen items-center max-w-7xl border-x-1 border-black bg-[#222222] max-md:flex-col"
+	class="flex min-h-screen w-full max-w-7xl items-center border-x-1 border-black bg-[#222222] max-md:flex-col"
 >
 	<div class="flex w-full flex-col items-center p-4">
 		<img

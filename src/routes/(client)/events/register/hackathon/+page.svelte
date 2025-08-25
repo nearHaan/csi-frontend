@@ -1,12 +1,20 @@
 <script lang="ts">
+	import type { Event, User } from '$lib/types';
 	let isCreate = $state(false);
 
 	function toggleMode(title: string) {
 		isCreate = title === 'create';
 	}
+
+	let { details } = $props<{
+		details: {
+			event?: Event;
+			user?: User;
+		};
+	}>();
 </script>
 
-<div class="flex w-full flex-col items-start justify-start gap-y-2 p-4 overflow-hidden">
+<div class="flex w-full flex-col items-start justify-start gap-y-2 overflow-hidden p-4">
 	<div class="flex gap-x-2 max-sm:flex-col">
 		<h3 class="max-sm:text-md text-[#757575] min-sm:text-lg">Event Name:</h3>
 		<p class="text-lg">Event Name</p>
@@ -85,11 +93,7 @@
 							class="h-8 w-full rounded bg-[#505050] p-2"
 							type="email"
 						/>
-						<button
-							class="cursor-pointer rounded bg-[#222222] py-1 px-3"
-						>
-							Check
-						</button>
+						<button class="cursor-pointer rounded bg-[#222222] px-3 py-1"> Check </button>
 					</div>
 				</div>
 				<div class="mt-8 w-full px-2">
