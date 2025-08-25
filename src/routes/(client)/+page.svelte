@@ -19,30 +19,42 @@
 		message: 'Loading events list'
 	});
 
-	onMount(async () => {
-		if ($isLoggedin) {
-			const accessToken: string = localStorage.getItem('accessToken')!;
-			try {
-				const res = await fetch(`${PUBLIC_API_URL}/api/`, {
-					method: 'GET',
-					headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` }
-				});
-				if (!res.ok) {
-					const error = await res.json().catch(() => ({}));
-					console.log(error);
-					throw new Error(error.message);
+	$effect(() => {
+		async function loadEvents() {
+			if ($isLoggedin) {
+				const accessToken: string = localStorage.getItem('accessToken')!;
+				try {
+					const res = await fetch(`${PUBLIC_API_URL}/api/`, {
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: `Bearer ${accessToken}`
+						}
+					});
+					if (!res.ok) {
+						const error = await res.json().catch(() => ({}));
+						console.log(error);
+						throw new Error(error.message);
+					}
+					myEvents = {
+						state: 'success',
+						data: (await res.json()) as unknown as EventList
+					};
+				} catch (error) {
+					myEvents = {
+						state: 'failed',
+						message: 'Failed to load'
+					};
 				}
+			} else {
 				myEvents = {
-					state: 'success',
-					data: (await res.json()) as unknown as EventList
-				};
-			} catch (error) {
-				myEvents = {
-					state: 'failed',
-					message: 'Failed to load'
+					state: 'pending',
+					message: 'Loading events list'
 				};
 			}
 		}
+
+		loadEvents();
 	});
 </script>
 
