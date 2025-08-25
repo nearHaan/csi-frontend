@@ -34,8 +34,8 @@
 		<img alt="event-poster" src={event.image} />
 	</div>
 	{#if (!event.regOpen || event.isRegistrationFull) && details.status === 'upcoming'}
-		<div class="flex w-full justify-end gap-x-2">
-			{#if event.isRegistrationFull}
+		<div class="flex w-full flex-col items-end justify-end gap-x-2">
+			{#if event.isRegistrationFull && event.regOpen}
 				<div class="marquee-container flex items-center bg-yellow-200 py-1">
 					<div class="marquee-track text-xs font-bold text-yellow-800">
 						<span>Registration Full | </span>
